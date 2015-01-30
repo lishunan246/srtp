@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html; charset=utf-8"%>
-<html lang="zh-cn" >
+<html lang="zh-cn">
     <head>
         <meta meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
