@@ -13,7 +13,11 @@
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
-      <configuration />
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/com/lishunan/gpm/Application.java</file>
+        </fileset>
+      </configuration>
     </facet>
     <facet type="javaeeApplication" name="javaEEApplication">
       <configuration>
@@ -32,5 +36,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Spring-4.1.4.RELEASE" level="project" />
     <orderEntry type="library" name="Spring MVC-4.1.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
   </component>
 </module>

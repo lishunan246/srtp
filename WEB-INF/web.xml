@@ -5,5 +5,14 @@
 		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
 
+    <servlet>
+        <servlet-name>Servletcc</servlet-name>
+        <servlet-class>com.lishunan.gpm.HelloWorldController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Servletcc</servlet-name>
+        <url-pattern>/ddd</url-pattern>
+    </servlet-mapping>
 
 </web-app>
