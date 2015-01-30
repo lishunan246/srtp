@@ -1,6 +1,6 @@
 <%@include file="header.jsp" %>
 <%@include file="navbar.jsp" %>
-
+<%@ page contentType="text/html; charset=utf-8"%>
     <!-- Begin page content -->
         <div class="row">
             <div class="col-md-3 col-md-offset-1">

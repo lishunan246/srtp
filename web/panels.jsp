@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=utf-8"%>
 <div class="container" id = "left-part">
                     <div class="panel  panel-success">
                         <!-- Default panel contents -->
