@@ -3,8 +3,8 @@ function login_submit () {
     var password=$("#password:input").val();
     $.post("login",
         {
-            "user": user,
-            "password":password
+            "account": user,
+            "pwd":password
         },
         function(data){
             alert(data);
