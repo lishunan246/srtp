@@ -11,11 +11,11 @@ import java.io.PrintWriter;
  * Created by lishunan on 15-1-30.
  */
 public class HelloWorldController extends HttpServlet {
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         String c = request.getParameter("color");
         out.print(c);
     }
-
 }
