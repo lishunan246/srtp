@@ -12,7 +12,7 @@
 
     <servlet-mapping>
         <servlet-name>Servletcc</servlet-name>
-        <url-pattern>/login</url-pattern>
+        <url-pattern>/ddd</url-pattern>
     </servlet-mapping>
     
     <servlet>
