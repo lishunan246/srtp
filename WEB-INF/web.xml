@@ -14,5 +14,14 @@
         <servlet-name>Servletcc</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+            <servlet-name>SLoginServlet</servlet-name>
+            <servlet-class>com.lishunan.gpm.SLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SLoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
 
 </web-app>
