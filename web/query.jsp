@@ -20,7 +20,7 @@
                             <input class="form-control" id="sid" type="text" placeholder="某神奇的毕业设计" disabled>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">类别</label>
+                            <label>类别</label>
                             <fieldset disabled>
                                 <div class="radio">
                                     <label>
