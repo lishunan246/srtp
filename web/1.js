@@ -1,9 +1,10 @@
-function login_submit (argument) {
-    alert("logging in");
+function login_submit () {
+    var user=$("#user:input").val();
+    var password=$("#password:input").val();
     $.post("login",
         {
-            "user":"shi",
-            "password":"123456"
+            "user": user,
+            "password":password
         },
         function(data){
             alert(data);

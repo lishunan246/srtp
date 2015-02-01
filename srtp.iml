@@ -37,5 +37,6 @@
     <orderEntry type="library" name="Spring-4.1.4.RELEASE" level="project" />
     <orderEntry type="library" name="Spring MVC-4.1.4.RELEASE" level="project" />
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
+    <orderEntry type="library" name="jQuery-2.0.0" level="application" />
   </component>
 </module>
