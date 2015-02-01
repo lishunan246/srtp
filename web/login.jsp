@@ -5,7 +5,7 @@
     <!-- Begin page content -->
         <div class="container">
 
-            <form class="form-signin" role="form">
+            <form class="form-signin" role="form" onsubmit="login_submit()">
                 <h2 class="form-signin-heading">请登录</h2>
                 <input type="text" class="form-control" placeholder="学号" required autofocus>
                 <input type="password" class="form-control" placeholder="密码" required>
@@ -14,7 +14,7 @@
                         <input type="checkbox" value="remember-me"> 记住我
                     </label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" onclick="login_submit()">登录</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
             </form>
 
         </div> <!-- /container -->

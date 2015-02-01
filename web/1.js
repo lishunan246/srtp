@@ -1,5 +1,6 @@
 function login_submit (argument) {
-    $.get("login",
+    alert("logging in");
+    $.post("login",
         {
             "user":"shi",
             "password":"123456"

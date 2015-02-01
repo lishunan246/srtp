@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,12 +30,15 @@ public class SLoginServlet extends HttpServlet {
             pstmt.setString(1, account);
             pstmt.setString(2, password);
             ResultSet rs = pstmt.executeQuery();
+
+            response.setContentType("text/html");
+            PrintWriter out = response.getWriter();
             if (rs.next()) {
                 //request.getRequestDispatcher("index.jsp").forward(request, response);
-                response.sendRedirect("index.jsp");
+                out.write("1");
             } else{
                 //request.getRequestDispatcher("login.jsp").forward(request, response);
-                response.sendRedirect("login.jsp");
+                out.write("0");
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -49,5 +53,10 @@ public class SLoginServlet extends HttpServlet {
                 }
             }
         }
+    }
+    @Override
+    public void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException
+    {
+        doPost(request,response);
     }
 }
