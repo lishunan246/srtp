@@ -8,7 +8,7 @@
             </div>
             <div class="col-md-7">
                 <div class="container" id="right-part">
-                    <form role="form">
+                    <form id="ktbg-form" role="form">
                          <div class="form-group">
                             <label for="name-en">毕业设计名称（英文）</label>
                             <input class="form-control" id="name-en" type="text" placeholder="" >
@@ -21,13 +21,13 @@
                             <label>类别</label>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                        <input type="radio" name="ktbg-type" value="lw" checked>
                                         毕业论文
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        <input type="radio" name="ktbg-type" value="sj">
                                         毕业设计
                                     </label>
                                 </div>
