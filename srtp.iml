@@ -39,5 +39,7 @@
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="library" name="jQuery-2.0.0" level="application" />
     <orderEntry type="library" name="javax.json-api-1.0" level="project" />
+    <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
   </component>
 </module>

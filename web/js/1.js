@@ -11,7 +11,7 @@ $("#login-form").submit(function() {
         var obj=JSON.parse(msg);
         if(obj.status)
         {
-            window.location.href="index.jsp";
+            window.location.href="../index.jsp";
         }
         else
         {
@@ -35,7 +35,18 @@ $("#ktbg-form").submit(function(){
        url:url,
        data:data
    }).done(function(msg){
-       
+
    });
    return false;
+});
+
+$(function () {
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo(document.body);
+            });
+        }
+    });
 });

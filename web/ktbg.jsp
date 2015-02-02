@@ -38,6 +38,7 @@
                         </div>
                         <button type="submit" class="btn btn-default">提交</button>
                     </form>
+                    <input class="btn-default" id="fileupload" type="file" name="ktbg-file" data-url="" accept="application/zip">
                 </div>
             </div>
         </div>
