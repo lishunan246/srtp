@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -17,7 +18,8 @@ import java.sql.SQLException;
 /**
  * Created by Administrator on 2015/2/1.
  */
-public class SLoginServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
+    public HttpSession session;
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
@@ -26,7 +28,7 @@ public class SLoginServlet extends HttpServlet {
         Connection conn = null;
         try {
             conn = DB.getConn();
-            String sql="select * from student where sid = ? and spassword = ?";
+            String sql="select * from people where account = ? and password = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, account);
@@ -35,12 +37,13 @@ public class SLoginServlet extends HttpServlet {
 
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
-
             JsonObjectBuilder builder=Json.createObjectBuilder();
             if (rs.next()) {
                 //request.getRequestDispatcher("index.jsp").forward(request, response);
+                session = request.getSession();
+                session.setAttribute("username", rs.getString(1));
                 builder.add("status",true)
-                .add("message","success");
+                        .add("message", "success");
             } else{
                 //request.getRequestDispatcher("login.jsp").forward(request, response);
                 builder.add("status",false)

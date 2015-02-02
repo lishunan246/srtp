@@ -16,11 +16,11 @@
     </servlet-mapping>
     
     <servlet>
-            <servlet-name>SLoginServlet</servlet-name>
-            <servlet-class>com.lishunan.gpm.SLoginServlet</servlet-class>
+            <servlet-name>LoginServlet</servlet-name>
+            <servlet-class>com.lishunan.gpm.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>SLoginServlet</servlet-name>
+        <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login.do</url-pattern>
     </servlet-mapping>
 
