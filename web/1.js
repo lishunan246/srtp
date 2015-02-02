@@ -1,22 +1,25 @@
-function login_submit () {
-    var user=$("#user:input").val();
-    var password=$("#password:input").val();
+$("#login-form").submit(function() {
 
-    $.post("login",
-        {
-            "account": user,
-            "pwd":password
-        },
-        function(data){
-            var obj = JSON.parse(data);
-            if (obj.status) {
-                alert(obj.message);
-                window.location.href = "index.jsp";
+        var url = "login.do"; // the script where you handle the form input.
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {
+                account:$("#user:input").val(),
+                pwd:$("#password:input").val()
+            }// serializes the form's elements.
+        }).done(function( msg ) {
+            var obj=JSON.parse(msg);
+            if(obj.status)
+            {
+                window.location.href="index.jsp";
             }
-            else {
-                alert(obj.message);
+            else
+            {
+               alert(obj.message);
             }
-        }
-    );
-    return false;
-}
+        });
+
+        return false; // avoid to execute the actual submit of the form.
+    });
