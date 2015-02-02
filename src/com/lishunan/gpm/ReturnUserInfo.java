@@ -39,6 +39,8 @@ public class ReturnUserInfo  extends HttpServlet {
                     .add("name", rs.getString(3))
                     .add("type", rs.getString(4));
 
+            out.print(builder.build());
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {

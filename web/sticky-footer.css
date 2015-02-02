@@ -34,21 +34,21 @@ body {
 }
 
 nav{
-  font-family: "Microsoft YaHei";
+  font-family: "Microsoft YaHei", serif;
 }
 
 #left-part{
-  font-family: "Microsoft YaHei";
+  font-family: "Microsoft YaHei", serif;
   padding-left: 10px;
 }
 
 #right-part{
-  font-family: "Microsoft YaHei";
+  font-family: "Microsoft YaHei", serif;
   padding-right: 10px;
 }
 
 .form-signin{
-  font-family: "Microsoft Yahei";
+    font-family: "Microsoft Yahei", serif;
 }
 
 .form-signin {

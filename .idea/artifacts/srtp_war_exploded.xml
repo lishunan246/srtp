@@ -14,6 +14,7 @@
           <element id="library" level="project" name="javax.json-1.0.4" />
           <element id="library" level="project" name="javax.json-api-1.0 (3)" />
           <element id="library" level="project" name="javax.json-1.0.4 (2)" />
+          <element id="library" level="project" name="javax.json-1.0.4 (3)" />
         </element>
       </element>
     </root>

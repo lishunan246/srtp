@@ -11,13 +11,15 @@ function hideAlertBox()
 
 $("#login-form").submit(function() {
     var url = "login.do"; // the script where you handle the form input.
+    var data={
+        account:$("#user:input").val(),
+        pwd:$("#password:input").val()
+    };
+    console.log(JSON.stringify(data));
     $.ajax({
         type: "POST",
         url: url,
-        data: {
-            account:$("#user:input").val(),
-            pwd:$("#password:input").val()
-        }
+        data: data
     }).done(function( msg ) {
         var obj=JSON.parse(msg);
         if(obj.status)
