@@ -1,5 +1,7 @@
 package com.lishunan.gpm;
 
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,13 +35,18 @@ public class SLoginServlet extends HttpServlet {
 
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
+
+            JsonObjectBuilder builder=Json.createObjectBuilder();
             if (rs.next()) {
                 //request.getRequestDispatcher("index.jsp").forward(request, response);
-                out.write("1");
+                builder.add("status",true)
+                .add("message","success");
             } else{
                 //request.getRequestDispatcher("login.jsp").forward(request, response);
-                out.write("0");
+                builder.add("status",false)
+                        .add("message","failed");
             }
+            out.print(builder.build());
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
