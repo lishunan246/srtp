@@ -1,3 +1,14 @@
+function showError(msg)
+{
+    $("#alert-box").removeClass("hidden").html(msg);
+}
+
+function hideAlertBox()
+{
+    $("#alert-box").addClass("hidden");
+}
+
+
 $("#login-form").submit(function() {
     var url = "login.do"; // the script where you handle the form input.
     $.ajax({
@@ -15,7 +26,7 @@ $("#login-form").submit(function() {
         }
         else
         {
-            alert(obj.message);
+            showError(obj.message);
         }
     });
     return false; // avoid to execute the actual submit of the form.

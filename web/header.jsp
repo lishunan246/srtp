@@ -12,7 +12,6 @@
         <link href="sticky-footer.css" rel="stylesheet">
     </head>
 
-    <div id="alert-box" class="alert alert-warning hidden" role="alert">
-        <strong>Warning!</strong> Better check yourself, you're not looking too good.
+    <div id="alert-box" class="alert alert-danger hidden" role="alert" onclick="hideAlertBox()">
     </div>
     <body>
