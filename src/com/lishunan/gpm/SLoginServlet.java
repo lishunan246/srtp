@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 /**
  * Created by Administrator on 2015/2/1.
  */
@@ -35,10 +34,11 @@ public class SLoginServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
             if (rs.next()) {
                 //request.getRequestDispatcher("index.jsp").forward(request, response);
+                //response.sendRedirect("index.jsp");
                 out.write("1");
             } else{
                 //request.getRequestDispatcher("login.jsp").forward(request, response);
-                out.write("0");
+                out.write("0" );
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
