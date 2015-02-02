@@ -8,13 +8,11 @@
 
         <title>毕业设计|浙江大学计算机科学与技术学院</title>
 
-        <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
-
-        <!-- Custom styles for this template -->
         <link href="sticky-footer.css" rel="stylesheet">
-
-    
     </head>
 
+    <div id="alert-box" class="alert alert-warning hidden" role="alert">
+        <strong>Warning!</strong> Better check yourself, you're not looking too good.
+    </div>
     <body>
