@@ -10,7 +10,7 @@
                 <input type="password" id="password" class="form-control" placeholder="密码" onfocus="hideAlertBox()" required>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="remember-me"> 记住我
+                        <input type="checkbox" id="remember-me"> 记住我
                     </label>
                 </div>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
