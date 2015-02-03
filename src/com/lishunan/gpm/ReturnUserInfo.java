@@ -22,7 +22,12 @@ public class ReturnUserInfo  extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String account = (String)request.getSession().getAttribute("username");
         Connection conn = null;
+        JsonObjectBuilder builder= Json.createObjectBuilder();
 
+        if (account.equals(null)){
+            builder.add("status", false);
+            return;
+        }
         try {
             conn = DB.getConn();
             String sql="select * from people where account = ?";
@@ -33,7 +38,7 @@ public class ReturnUserInfo  extends HttpServlet {
 
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
-            JsonObjectBuilder builder= Json.createObjectBuilder();
+
             builder.add("status",true)
                     .add("account", rs.getString(1))
                     .add("name", rs.getString(3))

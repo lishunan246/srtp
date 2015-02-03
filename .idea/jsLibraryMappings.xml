@@ -1,7 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$/web/js/1.js" libraries="{jQuery-2.0.0}" />
-    <file url="PROJECT" libraries="{bootstrap, jquery}" />
-  </component>
-</project>
+<project version="4" />
