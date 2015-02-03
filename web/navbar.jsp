@@ -9,12 +9,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.jsp">欢迎，李书楠</a>
+                    <a id="username" class="navbar-brand" href="index.jsp">毕业设计</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    
                    
 
                     <ul class="nav navbar-nav navbar-right">
@@ -26,7 +25,7 @@
                                 <button type="submit" class="btn btn-default">搜索</button>
                             </form>
                         </li>
-                        <li><a href="login.jsp">退出</a></li>
+                        <li><a onclick="logout()">退出</a></li>
                         
                     </ul>
                 </div><!-- /.navbar-collapse -->

@@ -1,3 +1,22 @@
+$(document).ready(function(){
+    var url="/currentuser.do";
+
+    $.ajax({
+        url:url
+    }).done(function(msg){
+        var obj=JSON.parse(msg);
+        if(obj.status)
+        {
+            $("#username").html("欢迎， "+obj.name).attr("href", "/");
+        }
+        else
+        {
+            $("#username").html("请登录").attr("href","login.jsp");
+
+        }
+    })
+})
+
 function showError(msg)
 {
     $("#alert-box").removeClass("hidden").html(msg);
@@ -82,3 +101,14 @@ $(function () {
         }
     });
 });
+
+function logout()
+{
+    var url="/logout.do";
+    $.ajax({
+        url:url
+    }).done(function(){
+        window.location.href="/login.jsp";
+    })
+}
+
