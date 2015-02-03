@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - @localhost" uuid="ac03a824-ea2a-4dad-ab3a-4b432335fd4f">
+    <database-info product="MySQL" version="5.6.23" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="gims"/>
+    <table name="admin" schema="" catalog="gims" type="TABLE">
+      <column name="aid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="aname" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" remarks="566h55CG5ZGY5aeT5ZCN"/>
+      <column name="apassword" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" remarks="566h55CG5ZGY5a+G56CBaGFzaOWAvA=="/>
+      <primary-key name="PRIMARY" columns="aid"/>
+    </table>
+    <table name="final" schema="" catalog="gims" type="TABLE">
+      <column name="sid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="5a2m5Y+3"/>
+      <column name="mtitle" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" remarks="5q+V5Lia6K6+6K6hL+iuuuaWh+agh+mimA=="/>
+      <column name="mlocalpath" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12" remarks="5q+V5Lia6K6+6K6hL+iuuuaWh+acrOWcsOi3r+W+hA=="/>
+      <column name="premotepath" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12" remarks="5q+V5Lia6K6+6K6hL+iuuuaWh+aWh+S7tnVybA=="/>
+      <column name="anonymoustid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="55uy5a6h6ICB5biI5bel5Y+3"/>
+      <column name="anonymoustcomment" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1" remarks="55uy5a6h6ICB5biI6K+E6K66"/>
+      <column name="anonymouspass" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" remarks="5q+V5Lia6K6+6K6hL+iuuuaWh+aYr+WQpumAmui/h+ebsuWuoQ=="/>
+      <column name="mfilename" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" remarks="5q+V5Lia6K6+6K6hL+iuuuaWh+aWh+S7tuWQjQ=="/>
+      <column name="supervisortid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5a+85biI5pWZ5bel5Y+3"/>
+      <column name="supervisortcommment" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1" remarks="5a+85biI6K+E6K66"/>
+      <column name="supervisorpass" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" remarks="5piv5ZCm6YCa6L+H5a+85biI5a6h5p+l"/>
+      <primary-key name="PRIMARY" columns="sid"/>
+      <index name="sid_UNIQUE" unique="true" columns="sid"/>
+    </table>
+    <table name="midterm" schema="" catalog="gims" type="TABLE">
+      <column name="sid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="5a2m5Y+3"/>
+      <column name="mtitle" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" remarks="5Lit5pyf5oql5ZGK5qCH6aKY"/>
+      <column name="mlocalpath" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12" remarks="5Lit5pyf5oql5ZGK5paH5Lu25pys5Zyw6Lev5b6E"/>
+      <column name="premotepath" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12" remarks="5Lit5pyf5oql5ZGK5paH5Lu2dXJs"/>
+      <column name="anonymoustid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="55uy5a6h6ICB5biI5bel5Y+3"/>
+      <column name="anonymoustcomment" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1" remarks="55uy5a6h6ICB5biI6K+E6K66"/>
+      <column name="anonymouspass" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" remarks="5Lit5pyf5oql5ZGK5piv5ZCm6YCa6L+H55uy5a6h"/>
+      <column name="mfilename" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" remarks="5Lit5pyf5oql5ZGK5paH5Lu25ZCN"/>
+      <column name="supervisortid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5a+85biI5pWZ5bel5Y+3"/>
+      <column name="supervisortcommment" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1" remarks="5a+85biI6K+E6K66"/>
+      <column name="supervisorpass" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" remarks="5piv5ZCm6YCa6L+H5a+85biI5a6h5p+l"/>
+      <primary-key name="PRIMARY" columns="sid"/>
+      <index name="sid_UNIQUE" unique="true" columns="sid"/>
+    </table>
+    <table name="people" schema="" catalog="gims" type="TABLE">
+      <column name="account" sqlType="CHAR" precision="20" scale="0" nullable="false" jdbcType="1"/>
+      <column name="password" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="type" sqlType="ENUM" precision="8" scale="0" nullable="true" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="account"/>
+      <index name="account_UNIQUE" unique="true" columns="account"/>
+    </table>
+    <table name="proposal" schema="" catalog="gims" type="TABLE">
+      <column name="sid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="5a2m5Y+3"/>
+      <column name="ptitle" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" remarks="5byA6aKY5oql5ZGK5qCH6aKY"/>
+      <column name="plocalpath" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12" remarks="5byA6aKY5oql5ZGK5paH5Lu25pys5Zyw6Lev5b6E"/>
+      <column name="premotepath" sqlType="VARCHAR" precision="200" scale="0" nullable="true" jdbcType="12" remarks="5byA6aKY5oql5ZGK5paH5Lu2dXJs"/>
+      <column name="anonymoustid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="55uy5a6h6ICB5biI5bel5Y+3"/>
+      <column name="anonymoustcomment" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1" remarks="55uy5a6h6ICB5biI6K+E6K66"/>
+      <column name="anonymouspass" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" remarks="5byA6aKY5oql5ZGK5piv5ZCm6YCa6L+H55uy5a6h"/>
+      <column name="pfilename" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12" remarks="5byA6aKY5oql5ZGK5paH5Lu25ZCN"/>
+      <column name="supervisortid" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" remarks="5a+85biI5pWZ5bel5Y+3"/>
+      <column name="supervisortcommment" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1" remarks="5a+85biI6K+E6K66"/>
+      <column name="supervisorpass" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" remarks="5piv5ZCm6YCa6L+H5a+85biI5a6h5p+l"/>
+      <primary-key name="PRIMARY" columns="sid"/>
+      <index name="sid_UNIQUE" unique="true" columns="sid"/>
+    </table>
+    <table name="student" schema="" catalog="gims" type="TABLE">
+      <column name="sid" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" remarks="5a2m5Y+3IOS+i+WmgiAzMTIwMTAwMDA="/>
+      <column name="sname" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12" remarks="5a2m55Sf5aeT5ZCN"/>
+      <column name="spassword" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12" remarks="5a+G56CB55qEaGFzaOWAvA=="/>
+      <column name="proposalscore" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="midtermscore" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="finalscore" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="score" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="mayjor" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="sid"/>
+    </table>
+    <table name="teacher" schema="" catalog="gims" type="TABLE">
+      <column name="tid" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" remarks="5pWZ5biI5bel5Y+3"/>
+      <column name="tname" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12" remarks="5pWZ5biI5aeT5ZCN"/>
+      <column name="tpassword" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12" remarks="5pWZ5biI5a+G56CB55qEaGFzaOWAvA=="/>
+      <column name="major" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="major2" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="tid"/>
+      <index name="tid_UNIQUE" unique="true" columns="tid"/>
+    </table>
+  </data-source>
+</component>

@@ -19,7 +19,25 @@ $("#login-form").submit(function() {
     $.ajax({
         type: "POST",
         url: url,
-        data: data
+        data: data,
+        timeout:500,
+        statusCode: {
+            500: function() {
+                alert(" 500 data still loading");
+                console.log('500 ');
+            }
+        },
+        error:function(request,status,err)
+        {
+            if(status=="timeout")
+            {
+                alert("timeout");
+            }
+            else
+            {
+                alert(request+status+err);
+            }
+        }
     }).done(function( msg ) {
         var obj=JSON.parse(msg);
         if(obj.status)
