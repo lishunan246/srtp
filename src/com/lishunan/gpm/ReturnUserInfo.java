@@ -20,6 +20,7 @@ public class ReturnUserInfo  extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=utf-8");
         String account = (String)request.getSession().getAttribute("username");
         Connection conn = null;
         JsonObjectBuilder builder= Json.createObjectBuilder();
@@ -35,9 +36,9 @@ public class ReturnUserInfo  extends HttpServlet {
             pstmt.setString(1, account);
             rs = pstmt.executeQuery();
             rs.next();
-            response.setContentType("text/html");
+            //response.setContentType("text/html; charset=utf-8");
 
-            System.out.println(rs.getString(3));
+            //System.out.println(rs.getString(3));
             builder.add("status",true)
                     .add("account", rs.getString(1))
                     .add("name", rs.getString(3))
@@ -57,7 +58,7 @@ public class ReturnUserInfo  extends HttpServlet {
 
         } catch (SQLException e) {
             //e.printStackTrace();
-            System.out.println(1);
+            //System.out.println(1);
             builder.add("status",false)
                     .add("account", "null")
                     .add("name", "null")
