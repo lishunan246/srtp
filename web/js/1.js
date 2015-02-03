@@ -13,7 +13,8 @@ $("#login-form").submit(function() {
     var url = "login.do"; // the script where you handle the form input.
     var data={
         account:$("#user:input").val(),
-        pwd:$("#password:input").val()
+        pwd:$("#password:input").val(),
+        remember:$("#remember-me").is(':checked')
     };
     console.log(JSON.stringify(data));
     $.ajax({
@@ -31,7 +32,7 @@ $("#login-form").submit(function() {
         {
             if(status=="timeout")
             {
-                alert("timeout");
+                showError("服务器无响应");
             }
             else
             {
