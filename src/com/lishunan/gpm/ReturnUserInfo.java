@@ -34,9 +34,10 @@ public class ReturnUserInfo  extends HttpServlet {
            // pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, account);
             rs = pstmt.executeQuery();
-
+            rs.next();
             response.setContentType("text/html");
 
+            System.out.println(rs.getString(3));
             builder.add("status",true)
                     .add("account", rs.getString(1))
                     .add("name", rs.getString(3))
@@ -46,6 +47,7 @@ public class ReturnUserInfo  extends HttpServlet {
 
         } catch (ClassNotFoundException e) {
             //e.printStackTrace();
+            System.out.println(0);
             builder.add("status",false)
                     .add("account", "null")
                     .add("name", "null")
@@ -55,6 +57,7 @@ public class ReturnUserInfo  extends HttpServlet {
 
         } catch (SQLException e) {
             //e.printStackTrace();
+            System.out.println(1);
             builder.add("status",false)
                     .add("account", "null")
                     .add("name", "null")
