@@ -23,21 +23,19 @@ public class ReturnUserInfo  extends HttpServlet {
         String account = (String)request.getSession().getAttribute("username");
         Connection conn = null;
         JsonObjectBuilder builder= Json.createObjectBuilder();
+        PreparedStatement pstmt;
+        ResultSet rs = null;
+        PrintWriter out = out = response.getWriter();
 
-        if (account.equals(null)){
-            builder.add("status", false);
-            return;
-        }
         try {
             conn = DB.getConn();
             String sql="select * from people where account = ?";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt = conn.prepareStatement(sql);
+           // pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, account);
-            ResultSet rs = pstmt.executeQuery();
+            rs = pstmt.executeQuery();
 
             response.setContentType("text/html");
-            PrintWriter out = response.getWriter();
 
             builder.add("status",true)
                     .add("account", rs.getString(1))
@@ -47,9 +45,22 @@ public class ReturnUserInfo  extends HttpServlet {
             out.print(builder.build());
 
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            builder.add("status",false)
+                    .add("account", "null")
+                    .add("name", "null")
+                    .add("type", "null");
+
+            out.print(builder.build());
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            builder.add("status",false)
+                    .add("account", "null")
+                    .add("name", "null")
+                    .add("type", "null");
+
+            out.print(builder.build());
         }
     }
 
