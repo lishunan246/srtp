@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="lishunan.com" />
+  <component name="PublishConfigData" serverName="lishunan.com">
+    <serverData>
+      <paths name="lishunan.com">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/apache-tomcat-8.0.18/webapps/ROOT" local="$PROJECT_DIR$/out/artifacts/srtp_war_exploded" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
 </project>
