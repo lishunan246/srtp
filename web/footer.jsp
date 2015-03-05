@@ -1,6 +1,6 @@
         <div class="footer">
             <div class="container">
-                <p class="text-muted">Copyright © 2007-2014 ZJU CS, All Rights Reserved</p>
+                <p class="text-muted">2007-2014 ZJU CS, All Rights Reserved</p>
             </div>
         </div>
 

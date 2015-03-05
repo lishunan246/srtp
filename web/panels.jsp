@@ -43,7 +43,7 @@
                             <tr>
                                 <td>上传</td>
                                 <td><a href="bylw.jsp">编辑</a></td>
-                                <td>查询</td>
+                                <td><a href="bylwquery.jsp">查询</a></td>
                             </tr>
                         </table>
                     </div>
