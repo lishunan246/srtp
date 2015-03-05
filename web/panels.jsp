@@ -15,22 +15,22 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="panel  panel-danger">
-                        <!-- Default panel contents -->
-                        <div class="panel-heading">中期报告</div>
-                        <div class="panel-body">
-                            <p>截至日期将近！</p>
-                        </div>
+    <%--<div class="panel  panel-danger">--%>
+    <%--<!-- Default panel contents -->--%>
+    <%--<div class="panel-heading">中期报告</div>--%>
+    <%--<div class="panel-body">--%>
+    <%--<p>截至日期将近！</p>--%>
+    <%--</div>--%>
 
-                        
-                        <table class="table text-center">
-                            <tr>
-                                <td>上传</td>
-                                <td>编辑</td>
-                                <td>查询</td>
-                            </tr>
-                        </table>
-                    </div>
+    <%----%>
+    <%--<table class="table text-center">--%>
+    <%--<tr>--%>
+    <%--<td>上传</td>--%>
+    <%--<td>编辑</td>--%>
+    <%--<td>查询</td>--%>
+    <%--</tr>--%>
+    <%--</table>--%>
+    <%--</div>--%>
                     <div class="panel  panel-primary">
                         <!-- Default panel contents -->
                         <div class="panel-heading">毕业论文</div>

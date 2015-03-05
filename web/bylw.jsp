@@ -19,8 +19,8 @@
             <form id="bylw-form" role="form" action="bylw.do" method="post">
 
                 <div class="form-group">
-                    <label for="description">论文摘要</label>
-                    <textarea id="description" class="form-control" rows="5"></textarea>
+                    <label for="intro">论文摘要</label>
+                    <textarea id="intro" name="intro" class="form-control" rows="5"></textarea>
                 </div>
                 <button type="submit" class="btn btn-default">提交</button>
             </form>
