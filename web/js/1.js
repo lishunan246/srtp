@@ -15,7 +15,7 @@ $(document).ready(function(){
 
         }
     })
-})
+});
 
 function showError(msg)
 {
@@ -72,35 +72,35 @@ $("#login-form").submit(function() {
     return false; // avoid to execute the actual submit of the form.
 });
 
-$("#ktbg-form").submit(function(){
-   var url="";
-   var data={
-       name_en:$("#name-en").val(),
-       name_cn:$("#name-cn").val(),
-       type:$('input[name="ktbg-type"]:checked').val(),
-       description:$("#description").val()
-   };
-   console.log(JSON.stringify(data));
-   $.ajax({
-       type:"POST",
-       url:url,
-       data:data
-   }).done(function(msg){
-
-   });
-   return false;
-});
-
-$(function () {
-    $('#fileupload').fileupload({
-        dataType: 'json',
-        done: function (e, data) {
-            $.each(data.result.files, function (index, file) {
-                $('<p/>').text(file.name).appendTo(document.body);
-            });
-        }
-    });
-});
+//$("#ktbg-form").submit(function(){
+//   var url="";
+//   var data={
+//       name_en:$("#name-en").val(),
+//       name_cn:$("#name-cn").val(),
+//       type:$('input[name="ktbg-type"]:checked').val(),
+//       description:$("#description").val()
+//   };
+//   console.log(JSON.stringify(data));
+//   $.ajax({
+//       type:"POST",
+//       url:url,
+//       data:data
+//   }).done(function(msg){
+//
+//   });
+//   return false;
+//});
+//
+//$(function () {
+//    $('#fileupload').fileupload({
+//        dataType: 'json',
+//        done: function (e, data) {
+//            $.each(data.result.files, function (index, file) {
+//                $('<p/>').text(file.name).appendTo(document.body);
+//            });
+//        }
+//    });
+//});
 
 function logout()
 {

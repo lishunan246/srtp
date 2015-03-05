@@ -8,7 +8,7 @@
             </div>
             <div class="col-md-7">
                 <div class="container" id="right-part">
-                    <form id="ktbg-form" role="form">
+                    <form id="ktbg-form" role="form" action="ktbg.do">
                          <div class="form-group">
                             <label for="name-en">毕业设计名称（英文）</label>
                             <input class="form-control" id="name-en" type="text" placeholder="" >
@@ -38,7 +38,6 @@
                         </div>
                         <button type="submit" class="btn btn-default">提交</button>
                     </form>
-                    <input class="btn-default" id="fileupload" type="file" name="ktbg-file" data-url="" accept="application/zip">
                 </div>
             </div>
         </div>

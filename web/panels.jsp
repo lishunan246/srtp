@@ -10,7 +10,7 @@
                         <table class="table text-center">
                             <tr>
                                 <td>上传</td>
-                                <td>编辑</td>
+                                <td><a href="ktbg.jsp">编辑</a></td>
                                 <td><a href="query.jsp">查询</a></td>
                             </tr>
                         </table>
@@ -42,7 +42,7 @@
                         <table class="table text-center">
                             <tr>
                                 <td>上传</td>
-                                <td>编辑</td>
+                                <td><a href="bylw.jsp">编辑</a></td>
                                 <td>查询</td>
                             </tr>
                         </table>
