@@ -11,7 +11,7 @@
                             <tr>
                                 <td>上传</td>
                                 <td><a href="ktbg.jsp">编辑</a></td>
-                                <td><a href="query.jsp">查询</a></td>
+                                <td><a href="ktbgquery.jsp">查询</a></td>
                             </tr>
                         </table>
                     </div>

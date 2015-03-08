@@ -1,3 +1,38 @@
+<%--
+需要一个查询开题报告状态的servlet
+url ktbgquery.do
+根据当前sesseion判断是哪个学生登陆
+无输入参数
+
+返回参数：
+
+status
+true 查询成功
+false 出错
+
+massage
+出错原因，如未登陆，数据库异常等
+
+name_en
+英文名
+
+name_cn
+中文名
+
+type
+lw：毕业论文
+sj：毕业设计
+
+teacher_pass
+
+true通过，否则false
+teacher_comment
+
+教师评论
+grade
+得分
+--%>
+
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@include file="header.jsp" %>
 <%@include file="navbar.jsp" %>

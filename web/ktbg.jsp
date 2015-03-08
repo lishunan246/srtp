@@ -1,3 +1,16 @@
+<%--
+servlet ktbg.do
+
+输入值见form
+
+需要的返回值
+status
+    true ：成功提交
+    false：提交失败
+
+ message
+    额外信息，如失败的具体原因
+        --%>
 <%@include file="header.jsp" %>
 <%@include file="navbar.jsp" %>
 <%@ page contentType="text/html; charset=utf-8"%>
