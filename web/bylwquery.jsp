@@ -3,7 +3,39 @@
   User: Li Shunan
   Date: 2015/3/5
   Time: 20:20
-  To change this template use File | Settings | File Templates.
+  学生对毕业论文状态的查询页面
+  bylwqyery.do
+
+  无输入参数，根据session判断学生是否登陆及其id
+  返回值：
+  status
+  true
+  false
+    查询是否成功
+
+  message
+    额外错误信息
+
+  intro
+    内容摘要
+
+  uploaded
+  true
+  false
+    文件是否已上传
+
+  supervisorpass
+  bool
+  supervisorcommment
+    导师评论
+  anonymouspass
+  bool 是否通过盲审
+  anonymouscomment
+  盲审评论
+
+    grade
+    得分
+
 --%>
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@include file="header.jsp" %>

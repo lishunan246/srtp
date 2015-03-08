@@ -3,7 +3,19 @@
   User: Li Shunan
   Date: 2015/3/5
   Time: 19:59
-  To change this template use File | Settings | File Templates.
+  提交论文摘要
+  servlet url bylw.do
+
+  输入见form
+
+  输出
+
+  status
+  true 成功
+  false 失败
+
+  message
+  额外信息，如失败原因
 --%>
 
 <%@include file="header.jsp" %>
