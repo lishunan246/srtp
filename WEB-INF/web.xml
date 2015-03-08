@@ -55,5 +55,14 @@
         <url-pattern>/ktbg.do</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ChangePassword</servlet-name>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ChangePassword</servlet-name>
+        <url-pattern>/changepassword.do</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

@@ -25,8 +25,16 @@
                                 <button type="submit" class="btn btn-default">搜索</button>
                             </form>
                         </li>
-                        <li><a onclick="logout()">退出</a></li>
-                        
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false">选项<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="changepassword.jsp">更改密码</a></li>
+                                <li class="divider"></li>
+                                <li><a onclick="logout()">退出</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
