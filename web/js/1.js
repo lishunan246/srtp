@@ -67,6 +67,7 @@ $("#login-form").submit(function() {
             }
         }
     }).done(function( msg ) {
+        console.log(msg);
         var obj=JSON.parse(msg);
         if(obj.status)
         {
