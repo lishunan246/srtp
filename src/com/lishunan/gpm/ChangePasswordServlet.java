@@ -23,8 +23,8 @@ public class ChangePasswordServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
         String paccount = request.getSession().getAttribute("username").toString();
-        String oldpd = request.getParameter("old-password");
-        String newpd = request.getParameter("new-password");
+        String oldpd = request.getParameter("old_password");
+        String newpd = request.getParameter("new_password");
         String confirm = request.getParameter("confirm");
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
