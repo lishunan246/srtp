@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
         Connection conn = null;
         try {
             conn = DB.getConn();
-            String sql="select password,salt from people where account = ? ";
+            String sql="select * from people where account = ? ";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, account);
