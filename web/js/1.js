@@ -7,7 +7,15 @@ $(document).ready(function(){
         var obj=JSON.parse(msg);
         if(obj.status)
         {
-            $("#username").html("欢迎， "+obj.name).attr("href", "/");
+            if ("student" == obj.type) {
+                $("#username").html("欢迎， " + obj.name + "同学").attr("href", "/");
+            }
+            else if ("teacher" == obj.type) {
+                $("#username").html("欢迎， " + obj.name + "老师").attr("href", "/teacher.jsp");
+            }
+            else if ("admin" == obj.type) {
+                $("#username").html("欢迎， " + obj.name + "管理员").attr("href", "/admin.jsp");
+            }
         }
         else
         {
@@ -62,7 +70,7 @@ $("#login-form").submit(function() {
         var obj=JSON.parse(msg);
         if(obj.status)
         {
-            window.location.href="../index.jsp";
+            window.location.href = "../redirect.jsp";
         }
         else
         {
@@ -71,6 +79,52 @@ $("#login-form").submit(function() {
     });
     return false; // avoid to execute the actual submit of the form.
 });
+
+$("#change-password-form").submit(function() {
+    var url = "changepassword.do"; // the script where you handle the form input.
+    var data={
+        old_password:$("#old-password:input").val(),
+        new_password:$("#new-password:input").val(),
+        confirm:$("#confirm:input").val()
+    };
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        timeout:500,
+        statusCode: {
+            500: function() {
+                alert(" 500 data still loading");
+                console.log('500 ');
+            }
+        },
+        error:function(request,status,err)
+        {
+            if(status=="timeout")
+            {
+                showError("no response");
+            }
+            else
+            {
+                alert(request+status+err);
+            }
+        }
+    }).done(function( msg ) {
+        var obj=JSON.parse(msg);
+        if(obj.status)
+        {
+            alert("New password is set.");
+            window.location.href = "../redirect.jsp";
+        }
+        else
+        {
+            showError(obj.message);
+        }
+    });
+    return false; // avoid to execute the actual submit of the form.
+});
+
 
 //$("#ktbg-form").submit(function(){
 //   var url="";

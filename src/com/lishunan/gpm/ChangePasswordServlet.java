@@ -38,8 +38,8 @@ public class ChangePasswordServlet extends HttpServlet {
             return;
         }*/
         String paccount = request.getSession().getAttribute("username").toString();
-        String oldpd = request.getParameter("old-password");
-        String newpd = request.getParameter("new-password");
+        String oldpd = request.getParameter("old_password");
+        String newpd = request.getParameter("new_password");
         String confirm = request.getParameter("confirm");
         Connection conn = null;
 
