@@ -29,7 +29,7 @@ public class GetSaltHashPwd {
         return generatedPassword;
     }
     public static String getSalt() throws NoSuchAlgorithmException{
-        SecureRandom sr=SecureRandom.getInstance("SHA1PRNG");
+        SecureRandom sr=new SecureRandom();
         byte[] salt=new byte[16];
         sr.nextBytes(salt);
         return salt.toString();
