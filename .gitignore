@@ -2,3 +2,7 @@ out/*
 .idea/workspace.xml
 .idea/dictionaries
 .idea/deployment.xml
+.idea/dataSources.local.xml
+.idea/dataSources.xml
+.idea/jsLibraryMappings.xml
+.idea/dataSources.ids

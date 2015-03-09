@@ -35,6 +35,7 @@
                 }
             }
         }).done(function (msg) {
+            console.log(msg);
             var obj = JSON.parse(msg);
             if (obj.status) {
                 if (obj.type == "admin") {
@@ -47,10 +48,13 @@
                     window.location.href = "../teacher.jsp";
                 }
                 else {
+                    alert(obj.message);
                     window.location.href = "../login.jsp";
                 }
             }
-            else {
+            else
+            {
+                alert(obj.message);
                 window.location.href = "../login.jsp";
             }
         });

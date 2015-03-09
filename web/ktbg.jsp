@@ -51,7 +51,7 @@ status
                             <label for="description">文献综述和开题报告要求</label>
                             <textarea name="description" id="description" class="form-control" rows="5"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-default">提交</button>
+                        <button type="submit" class="btn btn-primary">提交</button>
                     </form>
                 </div>
             </div>
