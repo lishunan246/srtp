@@ -21,11 +21,17 @@ public class KTBGqueryServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=utf-8");
-        String saccount = (String)request.getSession().getAttribute("username");
-        Connection conn = null;
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         JsonObjectBuilder builder = Json.createObjectBuilder();
+        if (request.getSession().getAttribute("username") == null){
+            builder.add("status", false)
+                    .add("message", "用户未登录");
+            out.print(builder.build());
+            return;
+        }
+        String saccount = (String)request.getSession().getAttribute("username");
+        Connection conn = null;
         try {
             conn = DB.getConn();
             String sql = "select * from ktbg where saccount = ?";

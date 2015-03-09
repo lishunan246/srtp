@@ -22,13 +22,19 @@ public class ChangePasswordServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=utf-8");
+        PrintWriter out = response.getWriter();
+        JsonObjectBuilder builder = Json.createObjectBuilder();
+        if (request.getSession().getAttribute("username") == null){
+            builder.add("status", false)
+                    .add("message", "用户未登录");
+            out.print(builder.build());
+            return;
+        }
         String paccount = request.getSession().getAttribute("username").toString();
         String oldpd = request.getParameter("old-password");
         String newpd = request.getParameter("new-password");
         String confirm = request.getParameter("confirm");
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        JsonObjectBuilder builder = Json.createObjectBuilder();
         Connection conn = null;
 
         if (confirm.equals(newpd)){
