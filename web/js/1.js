@@ -62,7 +62,7 @@ $("#login-form").submit(function() {
         var obj=JSON.parse(msg);
         if(obj.status)
         {
-            window.location.href="../index.jsp";
+            window.location.href = "../redirect.jsp";
         }
         else
         {
