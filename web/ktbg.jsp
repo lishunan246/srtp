@@ -23,7 +23,7 @@ status
             </div>
             <div class="col-md-7">
                 <div class="container" id="right-part">
-                    <form id="ktbg-form" role="form" action="ktbg.do">
+                    <form id="ktbg-form" role="form" action="ktbg.do" method="post">
                          <div class="form-group">
                             <label for="name-en">毕业设计名称（英文）</label>
                              <input class="form-control" name="name-en" id="name-en" type="text" placeholder="">
