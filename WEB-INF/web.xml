@@ -75,5 +75,15 @@
         <url-pattern>/changepassword.do</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>BylwServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.BylwServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BylwServlet</servlet-name>
+        <url-pattern>/bylw.do</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>
