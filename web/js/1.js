@@ -7,7 +7,15 @@ $(document).ready(function(){
         var obj=JSON.parse(msg);
         if(obj.status)
         {
-            $("#username").html("欢迎， "+obj.name).attr("href", "/");
+            if ("student" == obj.type) {
+                $("#username").html("欢迎， " + obj.name + "同学").attr("href", "/");
+            }
+            else if ("teacher" == obj.type) {
+                $("#username").html("欢迎， " + obj.name + "老师").attr("href", "/teacher.jsp");
+            }
+            else if ("admin" == obj.type) {
+                $("#username").html("欢迎， " + obj.name + "管理员").attr("href", "/admin.jsp");
+            }
         }
         else
         {

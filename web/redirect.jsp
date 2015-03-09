@@ -38,7 +38,7 @@
             var obj = JSON.parse(msg);
             if (obj.status) {
                 if (obj.type == "admin") {
-                    window.location.href = "../index.jsp";
+                    window.location.href = "../admin.jsp";
                 }
                 else if (obj.type == "student") {
                     window.location.href = "../index.jsp";
