@@ -31,6 +31,8 @@ teacher_comment
 教师评论
 grade
 得分
+
+施朝浩于2015.3.9完成
 --%>
 
 <%@ page contentType="text/html; charset=utf-8" %>
@@ -44,7 +46,7 @@ grade
             </div>
             <div class="col-md-7">
                 <div class="container" id="right-part">
-                    <form role="form">
+                    <form role="form" action="ktbgquery.do">
                         
                          <div class="form-group">
                             <label for="sid">毕业设计名称（英文）</label>

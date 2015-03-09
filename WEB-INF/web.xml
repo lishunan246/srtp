@@ -56,7 +56,18 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>KTBGqueryServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.KTBGqueryServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>KTBGqueryServlet</servlet-name>
+        <url-pattern>/ktbgquery.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>ChangePassword</servlet-name>
+        <servlet-class>com.lishunan.gpm.ChangePasswordServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
