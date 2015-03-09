@@ -46,14 +46,17 @@ public class ChangePasswordServlet extends HttpServlet {
         if (confirm.equals(newpd)){
             try {
                 conn = DB.getConn();
-                String sql2 = "select password from people where account = ?";
+                String sql2 = "select password ,salt from people where account = ?";
                 PreparedStatement pstmt2 = conn.prepareStatement(sql2);
                 pstmt2.setString(1, paccount);
                 ResultSet rs = pstmt2.executeQuery();
                 if (rs.next()){
+                    String salt=rs.getString(2);
+                    oldpd=GetSaltHashPwd.getSecurePassword(oldpd,salt);
                     if (oldpd.equals(rs.getString(1))){
                         String sql="update people set password = ? where account = ?";
                         PreparedStatement pstmt = conn.prepareStatement(sql);
+                        newpd=GetSaltHashPwd.getSecurePassword(newpd,salt);
                         pstmt.setString(1, newpd);
                         pstmt.setString(2, paccount);
                         int value = pstmt.executeUpdate();

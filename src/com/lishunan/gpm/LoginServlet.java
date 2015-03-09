@@ -28,17 +28,22 @@ public class LoginServlet extends HttpServlet {
         Connection conn = null;
         try {
             conn = DB.getConn();
-            String sql="select * from people where account = ? and password = ?";
+            String sql="select password,salt from people where account = ? ";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, account);
-            pstmt.setString(2, password);
             ResultSet rs = pstmt.executeQuery();
-
+            boolean isLegal=false;
+            if(rs.next()){
+                String salt=rs.getString("salt");
+                String pwd=rs.getString("password");
+                if(pwd.equals(GetSaltHashPwd.getSecurePassword(password,salt)))
+                    isLegal=true;
+            }
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             JsonObjectBuilder builder=Json.createObjectBuilder();
-            if (rs.next()) {
+            if (isLegal) {
                 //request.getRequestDispatcher("index.jsp").forward(request, response);
                 session = request.getSession();
                 session.setAttribute("username", rs.getString(1));
