@@ -25,12 +25,18 @@ public class ChangePasswordServlet extends HttpServlet {
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
         JsonObjectBuilder builder = Json.createObjectBuilder();
-        if (request.getSession().getAttribute("username") == null){
+        if (JudgePeopleType.judge(request, response) == "No"){
+            builder.add("status", false)
+                    .add("message", "权限不足");
+            out.print(builder.build());
+            return;
+        }
+        /*if (request.getSession().getAttribute("username") == null){
             builder.add("status", false)
                     .add("message", "用户未登录");
             out.print(builder.build());
             return;
-        }
+        }*/
         String paccount = request.getSession().getAttribute("username").toString();
         String oldpd = request.getParameter("old-password");
         String newpd = request.getParameter("new-password");
