@@ -22,6 +22,15 @@ public class KTBGServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=utf-8");
+        PrintWriter out = response.getWriter();
+        JsonObjectBuilder builder = Json.createObjectBuilder();
+        if (JudgePeopleType.judge(request, response) != "student"){
+            builder.add("status", false)
+                    .add("message", "权限不足");
+            out.print(builder.build());
+            return;
+        }
         String saccount = request.getSession().getAttribute("username").toString();
         String titleeng = request.getParameter("name-en");
         String titlechi = request.getParameter("name-cn");
@@ -34,9 +43,6 @@ public class KTBGServlet extends HttpServlet {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, saccount);
             ResultSet rs = pstmt.executeQuery();
-            response.setContentType("text/html");
-            PrintWriter out = response.getWriter();
-            JsonObjectBuilder builder = Json.createObjectBuilder();
 
             if (rs.next()){
                 String sql3 = "update ktbg set titleeng = ?, titlechi = ?, titletype = ?, titlereq = ? where saccount = ?";

@@ -26,7 +26,7 @@
 
 <!-- Begin page content -->
 <div class="container">
-    <form class="form-horizontal" action="changepassword.do">
+    <form class="form-horizontal" action="changepassword.do" id="change-password-form">
         <div class="form-group">
             <label for="old-password" class="col-sm-2 control-label">旧密码</label>
 
