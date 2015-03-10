@@ -49,25 +49,26 @@ grade
                     <form role="form" action="ktbgquery.do">
                         
                          <div class="form-group">
-                            <label for="sid">毕业设计名称（英文）</label>
-                            <input class="form-control" id="sid" type="text" placeholder="Magical Masterpiece!" disabled>
+                             <label for="name_en">毕业设计名称（英文）</label>
+                             <input class="form-control" id="name_en" type="text" placeholder="Magical Masterpiece!"
+                                    disabled>
                         </div>
                          <div class="form-group">
-                            <label for="sid">毕业设计名称（中文）</label>
-                            <input class="form-control" id="sid" type="text" placeholder="某神奇的毕业设计" disabled>
+                             <label for="name_cn">毕业设计名称（中文）</label>
+                             <input class="form-control" id="name_cn" type="text" placeholder="某神奇的毕业设计" disabled>
                         </div>
                         <div class="form-group">
                             <label>类别</label>
                             <fieldset disabled>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                        <input type="radio" name="ktbg-type" value="lw">
                                         毕业论文
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                        <input type="radio" name="ktbg-type" id="sj" value="sj">
                                         毕业设计
                                     </label>
                                 </div>
@@ -75,29 +76,66 @@ grade
                         </div>
                         <div class="form-group">
                             <label>老师审核状态</label>
-                            <strong><p>通过<span class="glyphicon glyphicon-ok"></span></p></strong>
+
+                            <p id="teacher_pass">
+                                <strong>通过<span class="glyphicon glyphicon-ok"></span></strong>
+                            </p>
                         </div>
                         <div class="form-group">
-                            <label>老师审核评语</label>
-                            <textarea class="form-control" rows="5" disabled>Good job</textarea>
+                            <label for="teacher_comment">老师审核评语</label>
+                            <textarea id="teacher_comment" class="form-control" rows="5" disabled>Good job</textarea>
                         </div>
                         <div class="form-group">
                              <label>总成绩</label>
                             <div class="progress">
-                              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+                                <div class="progress-bar progress-bar-success" id="grade" role="progressbar"
+                                     aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
                                 90分
                                 <span class="sr-only">90% Complete (success)</span>
                               </div>
                             </div>
                         </div>
-  
-                        
                     </form>
-
                 </div>
-
-
             </div>
         </div>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "ktbgquery.do",
+            timeout: 500,
+            statusCode: {
+                500: function () {
+                    alert(" 500 data still loading");
+                    console.log('500 ');
+                }
+            },
+            error: function (request, status, err) {
+                if (status == "timeout") {
+                    showError("服务器无响应");
+                }
+                else {
+                    alert(request + status + err);
+                }
+            }
+        }).done(function (msg) {
+            console.log(msg);
+            var obj = JSON.parse(msg);
+            if (!obj.status) {
+                alert(obj.message);
+            }
+            else {
+                $("#name_cn").val(obj.name_cn);
+                $("#name_en").val(obj.name_en);
+                $('input[name="ktbg-type"][value="' + obj.type + '"]').prop('checked', true);
+                //$("#description").text(obj.description);
+                $("#teacher_comment").val(obj.teacher_comment);
+                $("#grade").text(obj.grade);
+                $("#teacher_pass").text(obj.teacher_pass);
+            }
+        })
+    })
+</script>
 
 <%@include file="footer.jsp" %>
