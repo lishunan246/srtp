@@ -32,9 +32,9 @@ public class KTBGServlet extends HttpServlet {
             return;
         }
         String saccount = request.getSession().getAttribute("username").toString();
-        String titleeng = request.getParameter("name-en");
-        String titlechi = request.getParameter("name-cn");
-        String titletype = request.getParameter("ktbg-type");
+        String titleeng = request.getParameter("name_en");
+        String titlechi = request.getParameter("name_cn");
+        String titletype = request.getParameter("type");
         String titlereq = request.getParameter("description");
         Connection conn = null;
         try {

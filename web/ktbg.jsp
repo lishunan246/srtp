@@ -57,4 +57,40 @@ status
             </div>
         </div>
 
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "ktbgquery.do",
+            timeout: 500,
+            statusCode: {
+                500: function () {
+                    alert(" 500 data still loading");
+                    console.log('500 ');
+                }
+            },
+            error: function (request, status, err) {
+                if (status == "timeout") {
+                    showError("服务器无响应");
+                }
+                else {
+                    alert(request + status + err);
+                }
+            }
+        }).done(function (msg) {
+            console.log(msg);
+            var obj = JSON.parse(msg);
+            if (!obj.status) {
+                alert(obj.message);
+            }
+            else {
+                $("#name-cn").val(obj.name_cn);
+                $("#name-en").val(obj.name_en);
+                $('input[name="ktbg-type"][value="' + obj.type + '"]').prop('checked', true);
+                //$("#description").text(obj.description);
+            }
+        })
+    })
+</script>
+
         <%@include file="footer.jsp" %>
