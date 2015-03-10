@@ -131,8 +131,15 @@ grade
                 $('input[name="ktbg-type"][value="' + obj.type + '"]').prop('checked', true);
                 //$("#description").text(obj.description);
                 $("#teacher_comment").val(obj.teacher_comment);
-                $("#grade").text(obj.grade);
-                $("#teacher_pass").text(obj.teacher_pass);
+                $("#grade").text(obj.grade).attr("style", "width: " + obj.grade + "%");
+
+                if (obj.teacher_pass) {
+                    $("#teacher_pass").text("已通过");
+                }
+                else {
+                    $("#teacher_pass").text("未通过");
+                }
+
             }
         })
     })
