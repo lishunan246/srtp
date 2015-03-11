@@ -25,7 +25,7 @@ public class ChangePasswordServlet extends HttpServlet {
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
         JsonObjectBuilder builder = Json.createObjectBuilder();
-        if (JudgePeopleType.judge(request, response) == "No"){
+        if (JudgePeopleType.judge(request, response).equals("No")){
             builder.add("status", false)
                     .add("message", "权限不足");
             out.print(builder.build());

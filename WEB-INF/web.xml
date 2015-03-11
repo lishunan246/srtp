@@ -85,5 +85,55 @@
         <url-pattern>/bylw.do</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>KtbgZhidaoListServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.KtbgZhidaoListServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>KtbgZhidaoListServlet</servlet-name>
+        <url-pattern>/ktbgzhidaolist.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>KtbgMangdaoListServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.KtbgMangdaoListServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>KtbgMangdaoListServlet</servlet-name>
+        <url-pattern>/ktbgmangdaolist.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BylwQueryServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.BylwQueryServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BylwQueryServlet</servlet-name>
+        <url-pattern>/bylwquery.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BylwZhidaoListServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.BylwZhidaoListServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BylwZhidaoListServlet</servlet-name>
+        <url-pattern>/bylwzhidaolist.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BylwMangdaoListServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.BylwMangdaoListServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BylwMangdaoListServlet</servlet-name>
+        <url-pattern>/bylwmangdaolist.do</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

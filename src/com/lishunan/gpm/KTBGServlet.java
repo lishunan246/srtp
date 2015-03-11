@@ -25,7 +25,7 @@ public class KTBGServlet extends HttpServlet {
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
         JsonObjectBuilder builder = Json.createObjectBuilder();
-        if (JudgePeopleType.judge(request, response) != "student"){
+        if (!JudgePeopleType.judge(request, response).equals("student")){
             builder.add("status", false)
                     .add("message", "权限不足");
             out.print(builder.build());
