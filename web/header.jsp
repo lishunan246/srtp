@@ -12,6 +12,8 @@
         <link href="sticky-footer.css" rel="stylesheet">
     </head>
 
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
     <div id="alert-box" class="alert alert-danger hidden" role="alert" onclick="hideAlertBox()">
     </div>
     <body>

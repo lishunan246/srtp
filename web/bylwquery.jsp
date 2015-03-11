@@ -53,37 +53,40 @@
             <form role="form">
 
                 <div class="form-group">
-                    <label>论文摘要</label>
-                    <textarea class="form-control" rows="5" disabled>Good job</textarea>
+                    <label for="intro">论文摘要</label>
+                    <textarea id="intro" class="form-control" rows="5" disabled>Good job</textarea>
                 </div>
 
                 <div class="form-group">
                     <label>上传状态</label>
-                    <strong><p>完成<span class="glyphicon glyphicon-ok"></span></p></strong>
+
+                    <p>完成<span class="glyphicon glyphicon-ok"></span></p>
                 </div>
 
                 <div class="form-group">
                     <label>盲审老师审核状态</label>
-                    <strong><p>通过<span class="glyphicon glyphicon-ok"></span></p></strong>
+
+                    <p>通过<span class="glyphicon glyphicon-ok"></span></p>
                 </div>
                 <div class="form-group">
-                    <label>盲审老师审核评语</label>
-                    <textarea class="form-control" rows="5" disabled>Good job</textarea>
+                    <label for="ms_comment">盲审老师审核评语</label>
+                    <textarea id="ms_comment" class="form-control" rows="5" disabled>Good job</textarea>
                 </div>
 
                 <div class="form-group">
                     <label>导师审核状态</label>
-                    <strong><p>通过<span class="glyphicon glyphicon-ok"></span></p></strong>
+
+                    <p>通过<span class="glyphicon glyphicon-ok"></span></p>
                 </div>
                 <div class="form-group">
-                    <label>导师审核评语</label>
-                    <textarea class="form-control" rows="5" disabled>Good job</textarea>
+                    <label for="ds_comment">导师审核评语</label>
+                    <textarea class="form-control" id="ds_comment" rows="5" disabled>Good job</textarea>
                 </div>
                 <div class="form-group">
                     <label>总成绩</label>
 
                     <div class="progress">
-                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                        <div class="progress-bar" role="progressbar" aria-valuenow="40"
                              aria-valuemin="0" aria-valuemax="100" style="width: 90%">
                             90分
                             <span class="sr-only">90% Complete (success)</span>

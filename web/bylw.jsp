@@ -34,9 +34,9 @@
 
                 <div class="form-group">
                     <label for="intro">论文摘要</label>
-                    <textarea id="intro" name="intro" class="form-control" rows="5"></textarea>
+                    <textarea id="intro" name="intro" class="form-control" rows="10"></textarea>
                 </div>
-                <button type="submit" class="btn btn-default">提交</button>
+                <button type="submit" class="btn btn-primary">提交</button>
             </form>
         </div>
     </div>
