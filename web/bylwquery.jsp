@@ -26,7 +26,7 @@
 
   supervisorpass
   bool
-  supervisorcommment
+  supervisorcomment
     导师评论
   anonymouspass
   bool 是否通过盲审
