@@ -33,9 +33,9 @@ public class KtbgZhidaoListServlet extends HttpServlet {
         Connection conn = null;
         try {
             conn = DB.getConn();
-            String sql3 = "select association.saccount,student.sname, ktbg.titleeng, ktbg.titlechi, ktbg.titletype, ktbg.titlereq, ktbg.pass, ktbg.comment, ktbg.grade " +
-                    "from association, ktbg, student " +
-                    "where association.dsaccount=? and association.saccount=ktbg.saccount and ktbg.saccount=student.sid";
+            String sql3 = "select association.saccount,people.name, ktbg.titleeng, ktbg.titlechi, ktbg.titletype, ktbg.titlereq, ktbg.pass, ktbg.comment, ktbg.grade " +
+                    "from association, ktbg, people " +
+                    "where association.dsaccount=? and association.saccount=ktbg.saccount and ktbg.saccount=people.account";
 
             PreparedStatement pstmt3 = conn.prepareStatement(sql3);
             pstmt3.setString(1, taccount);

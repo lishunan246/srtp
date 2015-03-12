@@ -51,7 +51,7 @@ public class BylwQueryServlet extends HttpServlet {
                         .add("intro", rs.getString(2) == null ? "" : rs.getString(2))
                         .add("uploaded", rs.getString(3) == null ? "" : rs.getString(3))
                         .add("supervisorpass", rs.getString(4) == null ? "" : rs.getString(4))
-                        .add("supervisorcommment", rs.getString(5)  == null ? "" : rs.getString(5))
+                        .add("supervisorcomment", rs.getString(5) == null ? "" : rs.getString(5))
                         .add("anonymouspass", rs.getString(6) == null ? "" : rs.getString(6))
                         .add("anonymouscomment", rs.getString(7) == null ? "" : rs.getString(7))
                         .add("grade", rs.getString(8) == null ? "" : rs.getString(8));
@@ -60,7 +60,7 @@ public class BylwQueryServlet extends HttpServlet {
                         .add("intro", "")
                         .add("uploaded", "")
                         .add("supervisorpass", "")
-                        .add("supervisorcommment", "")
+                        .add("supervisorcomment", "")
                         .add("anonymouspass", "")
                         .add("anonymouscomment", "")
                         .add("grade", "");

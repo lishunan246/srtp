@@ -6,3 +6,4 @@ out/*
 .idea/dataSources.xml
 .idea/jsLibraryMappings.xml
 .idea/dataSources.ids
+.idea/misc.xml

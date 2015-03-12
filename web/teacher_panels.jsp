@@ -17,7 +17,7 @@
         <table class="table text-center">
             <tr>
                 <td><a href="ktbg_list.jsp">列表</a></td>
-                <td><a href="ktbgquery.jsp">统计</a></td>
+                <td><a>统计</a></td>
             </tr>
         </table>
     </div>
@@ -33,7 +33,7 @@
         <table class="table text-center">
             <tr>
                 <td><a href="bylw_list.jsp">列表</a></td>
-                <td><a href="bylwquery.jsp">统计</a></td>
+                <td><a>统计</a></td>
             </tr>
         </table>
     </div>

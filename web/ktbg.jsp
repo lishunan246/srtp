@@ -87,7 +87,7 @@ status
                 $("#name-cn").val(obj.name_cn);
                 $("#name-en").val(obj.name_en);
                 $('input[name="ktbg-type"][value="' + obj.type + '"]').prop('checked', true);
-                //$("#description").text(obj.description);
+                $("#description").text(obj.description);
             }
         })
     })

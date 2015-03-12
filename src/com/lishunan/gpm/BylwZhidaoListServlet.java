@@ -33,9 +33,9 @@ public class BylwZhidaoListServlet extends HttpServlet {
         Connection conn = null;
         try {
             conn = DB.getConn();
-            String sql3 = "select association.saccount, student.sname, bylw.paperintro, bylw.uploaded, bylw.supervisorpass, bylw.supervisorcomment, bylw.anonymouspass, bylw.anonymouscomment, bylw.grade" +
-                    " from association, bylw, student " +
-                    "where association.dsaccount=? and association.saccount=bylw.saccount and bylw.saccount=student.sid";
+            String sql3 = "select association.saccount, people.name, bylw.paperintro, bylw.uploaded, bylw.supervisorpass, bylw.supervisorcomment, bylw.anonymouspass, bylw.anonymouscomment, bylw.grade" +
+                    " from association, bylw, people " +
+                    "where association.dsaccount=? and association.saccount=bylw.saccount and bylw.saccount=people.account";
 
             PreparedStatement pstmt3 = conn.prepareStatement(sql3);
             pstmt3.setString(1, taccount);
