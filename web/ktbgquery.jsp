@@ -50,12 +50,11 @@ grade
                         
                          <div class="form-group">
                              <label for="name_en">毕业设计名称（英文）</label>
-                             <input class="form-control" id="name_en" type="text" placeholder="Magical Masterpiece!"
-                                    disabled>
+                             <input class="form-control" id="name_en" type="text" disabled>
                         </div>
                          <div class="form-group">
                              <label for="name_cn">毕业设计名称（中文）</label>
-                             <input class="form-control" id="name_cn" type="text" placeholder="某神奇的毕业设计" disabled>
+                             <input class="form-control" id="name_cn" type="text" disabled>
                         </div>
                         <div class="form-group">
                             <label>类别</label>

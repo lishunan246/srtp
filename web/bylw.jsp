@@ -42,3 +42,37 @@
     </div>
 
     <%@include file="footer.jsp" %>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "bylwquery.do",
+                timeout: 500,
+                statusCode: {
+                    500: function () {
+                        alert(" 500 data still loading");
+                        console.log('500 ');
+                    }
+                },
+                error: function (request, status, err) {
+                    if (status == "timeout") {
+                        showError("服务器无响应");
+                    }
+                    else {
+                        alert(request + status + err);
+                    }
+                }
+            }).done(function (msg) {
+                console.log(msg);
+                var obj = JSON.parse(msg);
+                if (!obj.status) {
+                    alert(obj.message);
+                }
+                else {
+                    $("#intro").text(obj.intro);
+                }
+            })
+        })
+    </script>
+
