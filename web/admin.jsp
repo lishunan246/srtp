@@ -11,21 +11,42 @@
 <!-- Begin page content -->
 <div class="row">
     <div class="col-md-3 col-md-offset-1">
-        <form id="query-form" role="form" action="manageUser.do" method="post">
+        <form id="query-form" role="form">
             <div class="form-group">
-                <label for="uid">学号（工号）</label>
-                <input class="form-control" name="uid" id="uid" type="text" placeholder="">
+                <div class="input-group">
+                    <input type="text" id="uid" class="form-control" placeholder="输入学号">
+                <span class="input-group-btn">
+                    <button class="btn btn-primry" type="button">搜索</button>
+                </span>
+                </div>
+                <!-- /input-group -->
+
             </div>
+
             <div class="form-group">
-                <label for="uname">姓名</label>
-                <input class="form-control" name="uname" id="uname" type="text" placeholder="">
+                <div class="input-group">
+                    <input type="text" id="uname" class="form-control" placeholder="输入姓名">
+                <span class="input-group-btn">
+                    <button class="btn btn-primry" type="button">搜索</button>
+                </span>
+                </div>
+                <!-- /input-group -->
             </div>
-            <button type="submit" class="btn btn-primary">搜索</button>
+
         </form>
     </div>
     <div class="col-md-7">
         <div class="container" id="right-part">
-        <tr><td>账号</td><td>姓名</td><td>类型</td><td>详情</td></tr>
+            <dl class="dl-horizontal">
+                <dt>姓名</dt>
+                <dd>施潮浩</dd>
+                <dt>学号/工号</dt>
+                <dd>3120102119</dd>
+                <dt>账号类型</dt>
+                <dd>学生</dd>
+                <dt>操作</dt>
+                <dd><a href="#">重设密码为用户id</a></dd>
+            </dl>
 
 
         </div>
