@@ -73,6 +73,29 @@
                     $("#intro").text(obj.intro);
                 }
             })
-        })
+        });
+
+        $("#bylw-form").submit(function () {
+            var url = "bylw.do";
+            var data = {
+                intro: $("#intro").val(),
+            };
+            console.log(JSON.stringify(data));
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data
+            }).done(function (msg) {
+                console.log(msg);
+                var obj = JSON.parse(msg);
+                if (!obj.status) {
+                    showError(obj.message);
+                }
+                else {
+                    alert("修改成功！");
+                }
+            });
+            return false;
+        });
     </script>
 

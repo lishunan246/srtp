@@ -90,7 +90,33 @@ status
                 $("#description").text(obj.description);
             }
         })
-    })
+    });
+
+    $("#ktbg-form").submit(function () {
+        var url = "ktbg.do";
+        var data = {
+            name_en: $("#name-en").val(),
+            name_cn: $("#name-cn").val(),
+            type: $('input[name="ktbg-type"]:checked').val(),
+            description: $("#description").val()
+        };
+        console.log(JSON.stringify(data));
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: data
+        }).done(function (msg) {
+            console.log(msg);
+            var obj = JSON.parse(msg);
+            if (!obj.status) {
+                showError(obj.message);
+            }
+            else {
+                alert("修改成功！");
+            }
+        });
+        return false;
+    });
 </script>
 
         <%@include file="footer.jsp" %>

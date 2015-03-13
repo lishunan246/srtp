@@ -139,7 +139,48 @@
         <servlet-name>KtbgZhidaoSubmitServlet</servlet-name>
         <servlet-class>com.lishunan.gpm.KtbgZhidaoSubmitServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>QueryUserServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.QueryUserServlet</servlet-class>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>QueryUserServlet</servlet-name>
+        <url-pattern>/queryUser.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ResetPwdServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.ResetPwdServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ResetPwdServlet</servlet-name>
+        <url-pattern>/resetPwd.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddDaoshiServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.AddDaoshiServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddDaoshiServlet</servlet-name>
+        <url-pattern>/addDaoshi.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddMangdaoServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.AddMangdaoServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddMangdaoServlet</servlet-name>
+        <url-pattern>/addMangdao.do</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>/login.jsp</welcome-file>
+    </welcome-file-list>
     <servlet-mapping>
         <servlet-name>KtbgZhidaoSubmitServlet</servlet-name>
         <url-pattern>/ktbgzhidaosubmit.do</url-pattern>
