@@ -35,7 +35,7 @@ public class KtbgMangdaoListServlet extends HttpServlet {
         Connection conn = null;
         try {
             conn = DB.getConn();
-            String sql = "select association.saccount,people.name, ktbg.titleeng, ktbg.titlechi, ktbg.titletype, ktbg.titlereq, ktbg.pass, ktbg.comment, ktbg.grade " +
+            String sql = "select association.saccount,people.name, ktbg.titleeng, ktbg.titlechi, ktbg.titletype, ktbg.titlereq, ktbg.supervisorpass, ktbg.supervisorcomment, ktbg.anonymouscomment, ktbg.anonymouscomment,ktbg.grade " +
                     "from association, ktbg, people " +
                     "where association.mdaccount=? and association.saccount=ktbg.saccount and ktbg.saccount=people.account";
             PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -55,9 +55,11 @@ public class KtbgMangdaoListServlet extends HttpServlet {
                             .add("name_cn", rs.getString(4) == null ? "" : rs.getString(4))
                             .add("type", rs.getString(5) == null ? "" : rs.getString(5))
                             .add("description", rs.getString(6) == null ? "" : rs.getString(6))
-                            .add("teacher_pass", rs.getString(7) == null ? "" : rs.getString(7))
-                            .add("teacher_comment", rs.getString(8) == null ? "" : rs.getString(8))
-                            .add("grade", rs.getString(9) == null ? "" : rs.getString(9)));
+                            .add("ds_pass", rs.getString(7) == null ? "" : rs.getString(7))
+                            .add("ds_comment", rs.getString(8) == null ? "" : rs.getString(8))
+                            .add("md_pass", rs.getString(9) == null ? "" : rs.getString(9))
+                            .add("md_comment", rs.getString(10) == null ? "" : rs.getString(10))
+                            .add("grade", rs.getString(11) == null ? "" : rs.getString(11)));
                 }while(rs.next());
                 builder.add("status", true)
                         .add("count", count)
@@ -71,8 +73,10 @@ public class KtbgMangdaoListServlet extends HttpServlet {
                         .add("name_cn", "")
                         .add("type", "")
                         .add("description", "")
-                        .add("teacher_pass", "")
-                        .add("teacher_comment", "")
+                        .add("ds_pass", "")
+                        .add("ds_comment", "")
+                        .add("md_pass", "")
+                        .add("md_comment", "")
                         .add("grade", ""));
                 builder.add("status",true)
                         .add("count", 0)
