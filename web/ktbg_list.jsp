@@ -19,7 +19,7 @@
             <div class="tabbable" id="tabs-874202">
                 <ul class="nav nav-tabs">
                     <li>
-                        <a href="#panel-877184" data-toggle="tab">Section 1</a>
+                        <a href="#panel-877184" data-toggle="tab">Section 1 <span class="badge">14</span></a>
                     </li>
                     <li class="active">
                         <a href="#panel-832086" data-toggle="tab">Section 2</a>

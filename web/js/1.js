@@ -20,6 +20,9 @@ $(document).ready(function(){
         else
         {
             $("#username").html("请登录").attr("href","login.jsp");
+            if ($(location).attr('pathname') != "/login.jsp") {
+                window.location.href = "/login.jsp";
+            }
 
         }
     })
