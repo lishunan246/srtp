@@ -17,19 +17,25 @@
     <div class="col-md-7">
         <div class="container" id="right-part">
             <div class="tabbable" id="tabs-874202">
-                <ul class="nav nav-tabs">
-                    <li>
-                        <a href="#panel-877184" data-toggle="tab">Section 1 <span class="badge">14</span></a>
-                    </li>
+                <ul class="nav nav-pills">
                     <li class="active">
-                        <a href="#panel-832086" data-toggle="tab">Section 2</a>
+                        <a href="#panel-877184" data-toggle="tab">您指导的学生 <span id="ds_count"
+                                                                               class="badge">...</span></a>
+                    </li>
+                    <li>
+                        <a href="#panel-832086" data-toggle="tab">您盲审的学生 <span id="md_count"
+                                                                               class="badge">...</span></a>
                     </li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane" id="panel-877184">
-                        <p>
-                            I'm in Section 1.
-                        </p>
+                        <table id="ds_table" class="table table-hover table-bordered">
+                            <tr class="info">
+                                <td>学号</td>
+                                <td>姓名</td>
+                                <td>毕业论文/设计</td>
+                            </tr>
+                        </table>
                     </div>
                     <div class="tab-pane active" id="panel-832086">
                         <table id="ms_table" class="table table-hover table-bordered">
