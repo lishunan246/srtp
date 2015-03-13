@@ -6,49 +6,43 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
- * Created by Administrator on 2015/3/9.
+ * Created by Administrator on 2015/3/13.
  */
-public class KTBGqueryServlet extends HttpServlet {
+public class KtbgMangdaoQueryServlet extends HttpServlet {
+    private HttpSession session;
+
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=utf-8");
-        response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         JsonObjectBuilder builder = Json.createObjectBuilder();
-        if (!JudgePeopleType.judge(request, response).equals("student")){
+        if (!JudgePeopleType.judge(request, response).equals("teacher")){
             builder.add("status", false)
                     .add("message", "权限不足");
             out.print(builder.build());
             return;
         }
-        String saccount = (String)request.getSession().getAttribute("username");
-        Connection conn;
+        String saccount = request.getParameter("saccount");
+        Connection conn = null;
         try {
             conn = DB.getConn();
-            String sql;
-            sql = "select * from ktbg where saccount = ?";
+            String sql = "select * from ktbg where saccount = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
+            //System.out.println(saccount);
             pstmt.setString(1, saccount);
             ResultSet rs = pstmt.executeQuery();
-
             if (rs.next()){
-                /*System.out.println(rs.getString(2));
-                System.out.println(rs.getString(3));
-                System.out.println(rs.getString(4));
-                System.out.println(rs.getString(6));
-                System.out.println(rs.getString(7));
-                System.out.println(rs.getString(8));*/
-                builder.add("status",true)
+                builder.add ("status", "true")
                         .add("name_en", rs.getString(2) == null ? "" : rs.getString(2))
                         .add("name_cn", rs.getString(3) == null ? "" : rs.getString(3))
                         .add("type", rs.getString(4) == null ? "" : rs.getString(4))
@@ -70,6 +64,7 @@ public class KTBGqueryServlet extends HttpServlet {
                         .add("md_comment", "")
                         .add("grade", "");
             }
+            pstmt.close();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
             builder.add("status", false)
@@ -78,13 +73,20 @@ public class KTBGqueryServlet extends HttpServlet {
             e.printStackTrace();
             builder.add("status", false)
                     .add("message", "未知错误");
+        }finally {
+            out.print(builder.build());
+            if (conn != null)
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
         }
-        out.print(builder.build());
+
     }
 
     @Override
-    public void doGet(HttpServletRequest request,HttpServletResponse response) throws IOException,ServletException
-    {
-        doPost(request,response);
+    public void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        doPost(request, response);
     }
 }

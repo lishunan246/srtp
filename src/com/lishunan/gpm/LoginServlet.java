@@ -1,5 +1,7 @@
 package com.lishunan.gpm;
 
+import org.springframework.jdbc.core.RowCallbackHandler;
+
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
 import javax.servlet.ServletException;

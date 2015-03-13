@@ -135,5 +135,83 @@
         <url-pattern>/bylwmangdaolist.do</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>KtbgZhidaoSubmitServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.KtbgZhidaoSubmitServlet</servlet-class>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>KtbgZhidaoSubmitServlet</servlet-name>
+        <url-pattern>/ktbgzhidaosubmit.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>KtbgZhidaoQueryServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.KtbgZhidaoQueryServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>KtbgZhidaoQueryServlet</servlet-name>
+        <url-pattern>/ktbgzhidaoquery.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>KtbgMangdaoSubmitServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.KtbgMangdaoSubmitServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>KtbgMangdaoSubmitServlet</servlet-name>
+        <url-pattern>/ktbgmangdaosubmit.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>KtbgMangdaoQueryServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.KtbgMangdaoQueryServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>KtbgMangdaoQueryServlet</servlet-name>
+        <url-pattern>/ktbgmangdaoquery.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BylwMangdaoQueryServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.BylwMangdaoQueryServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BylwMangdaoQueryServlet</servlet-name>
+        <url-pattern>/bylwmangdaoquery.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BylwZhidaoQueryServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.BylwZhidaoQueryServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BylwZhidaoQueryServlet</servlet-name>
+        <url-pattern>/bylwzhidaoquery.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BylwMangdaoSubmitServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.BylwMangdaoSubmitServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BylwMangdaoSubmitServlet</servlet-name>
+        <url-pattern>/bylwmangdaosubmit.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BylwZhidaoSubmitServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.BylwZhidaoSubmitServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BylwZhidaoSubmitServlet</servlet-name>
+        <url-pattern>/bylwzhidaosubmit.do</url-pattern>
+    </servlet-mapping>
 </web-app>
