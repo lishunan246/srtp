@@ -28,7 +28,7 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane" id="panel-877184">
+                    <div class="tab-pane active" id="panel-877184">
                         <table id="ds_table" class="table table-hover table-bordered">
                             <tr class="info">
                                 <td>学号</td>
@@ -37,12 +37,13 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="tab-pane active" id="panel-832086">
-                        <table id="ms_table" class="table table-hover table-bordered">
+                    <div class="tab-pane" id="panel-832086">
+                        <table id="md_table" class="table table-hover table-bordered">
                             <tr class="info">
                                 <td>学号</td>
                                 <td>姓名</td>
                                 <td>毕业论文/设计</td>
+                                <td>盲审通过</td>
                             </tr>
                         </table>
                     </div>
@@ -80,8 +81,20 @@
             }
             else {
                 if (obj.count) {
+                    $("#md_count").text(obj.count);
                     for (var i = 0; i < obj.count; i++) {
-                        $("#ms_table").append('<tr><td>' + obj.student[i].sid + '</td> <td>' + obj.student[i].sname + '</td> <td>' + obj.student[i].name_cn + '</td> </tr>');
+                        var temp;
+                        if (obj.student[i].md_pass) {
+                            temp = "已通过";
+                        }
+                        else {
+                            temp = "未通过";
+                        }
+                        $("#md_table").append(
+                                '<tr><td>' + obj.student[i].sid + '</td> <td>' + obj.student[i].sname + '</td> <td>' + obj.student[i].name_cn + '</td><td>' + temp + '</td></tr>'
+                        );
+
+
                     }
                 } else {
                     alert("no one");
