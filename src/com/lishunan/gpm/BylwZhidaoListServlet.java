@@ -33,7 +33,7 @@ public class BylwZhidaoListServlet extends HttpServlet {
         Connection conn = null;
         try {
             conn = DB.getConn();
-            String sql3 = "select association.saccount, people.name, bylw.paperintro, bylw.uploaded, bylw.supervisorpass, bylw.supervisorcomment, bylw.anonymouspass, bylw.anonymouscomment, bylw.grade" +
+            String sql3 = "select association.saccount, people.name, bylw.paperintro, bylw.uploaded, bylw.supervisorpass, bylw.supervisorcomment, bylw.ds_grade, bylw.anonymouspass, bylw.anonymouscomment, bylw.md_grade" +
                     " from association, bylw, people " +
                     "where association.dsaccount=? and association.saccount=bylw.saccount and bylw.saccount=people.account";
 
@@ -55,9 +55,10 @@ public class BylwZhidaoListServlet extends HttpServlet {
                             .add("uploaded", rs3.getString(4) == null ? "" : rs3.getString(4))
                             .add("supervisorpass", rs3.getString(5) == null ? "" : rs3.getString(5))
                             .add("supervisorcommment", rs3.getString(6) == null ? "" : rs3.getString(6))
-                            .add("anonymouspass", rs3.getString(7) == null ? "" : rs3.getString(7))
-                            .add("anonymouscomment", rs3.getString(8) == null ? "" : rs3.getString(8))
-                            .add("grade", rs3.getString(9) == null ? "" : rs3.getString(9)));
+                            .add("ds_grade", rs3.getString(7) == null ? "" : rs3.getString(7))
+                            .add("anonymouspass", rs3.getString(8) == null ? "" : rs3.getString(8))
+                            .add("anonymouscomment", rs3.getString(9) == null ? "" : rs3.getString(9))
+                            .add("md_grade", rs3.getString(10) == null ? "" : rs3.getString(10)));
                 }while(rs3.next());
                 builder.add("status", true)
                         .add("count", count)
@@ -71,9 +72,10 @@ public class BylwZhidaoListServlet extends HttpServlet {
                         .add("uploaded", "")
                         .add("supervisorpass", "")
                         .add("supervisorcommment", "")
+                        .add("ds_grade", "")
                         .add("anonymouspass", "")
                         .add("anonymouscomment", "")
-                        .add("grade", ""));
+                        .add("md_grade", ""));
                 builder.add("status", true)
                         .add("count", 0)
                         .add("student", zdmess);
