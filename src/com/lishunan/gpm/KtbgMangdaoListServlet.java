@@ -35,7 +35,7 @@ public class KtbgMangdaoListServlet extends HttpServlet {
         Connection conn = null;
         try {
             conn = DB.getConn();
-            String sql = "select association.saccount,people.name, ktbg.titleeng, ktbg.titlechi, ktbg.titletype, ktbg.titlereq, ktbg.supervisorpass, ktbg.supervisorcomment, ktbg.anonymouscomment, ktbg.anonymouscomment,ktbg.grade " +
+            String sql = "select association.saccount,people.name, ktbg.titleeng, ktbg.titlechi, ktbg.titletype, ktbg.titlereq, ktbg.supervisorpass, ktbg.supervisorcomment, ktbg.anonymouspass, ktbg.anonymouscomment,ktbg.grade " +
                     "from association, ktbg, people " +
                     "where association.mdaccount=? and association.saccount=ktbg.saccount and ktbg.saccount=people.account";
             PreparedStatement pstmt = conn.prepareStatement(sql);
