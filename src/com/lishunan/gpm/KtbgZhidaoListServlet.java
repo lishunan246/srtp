@@ -34,7 +34,7 @@ public class KtbgZhidaoListServlet extends HttpServlet {
         Connection conn = null;
         try {
             conn = DB.getConn();
-            String sql3 = "select association.saccount,people.name, ktbg.titleeng, ktbg.titlechi, ktbg.titletype, ktbg.titlereq,  ktbg.supervisorpass, ktbg.supervisorcomment, ktbg.anonymouscomment, ktbg.anonymouscomment, ktbg.grade " +
+            String sql3 = "select association.saccount,people.name, ktbg.titleeng, ktbg.titlechi, ktbg.titletype, ktbg.titlereq,  ktbg.supervisorpass, ktbg.supervisorcomment, ktbg.ds_grade, ktbg.anonymouscomment, ktbg.anonymouscomment, ktbg.md_grade " +
                     "from association, ktbg, people " +
                     "where association.dsaccount=? and association.saccount=ktbg.saccount and ktbg.saccount=people.account";
 
@@ -58,9 +58,10 @@ public class KtbgZhidaoListServlet extends HttpServlet {
                                     .add("description", rs3.getString(6) == null ? "" : rs3.getString(6))
                                     .add("ds_pass", rs3.getString(7) == null ? "" : rs3.getString(7))
                                     .add("ds_comment", rs3.getString(8) == null ? "" : rs3.getString(8))
-                                    .add("md_pass", rs3.getString(9) == null ? "" : rs3.getString(9))
-                                    .add("md_comment", rs3.getString(10) == null ? "" : rs3.getString(10))
-                                    .add("grade", rs3.getString(11) == null ? "" : rs3.getString(11)));
+                                    .add("ds_grade", rs3.getString(9) == null ? "" : rs3.getString(9))
+                                    .add("md_pass", rs3.getString(10) == null ? "" : rs3.getString(10))
+                                    .add("md_comment", rs3.getString(11) == null ? "" : rs3.getString(11))
+                                    .add("md_grade", rs3.getString(12) == null ? "" : rs3.getString(12)));
                 }while(rs3.next());
                 builder.add("status", true)
                         .add("count", count)
@@ -76,9 +77,10 @@ public class KtbgZhidaoListServlet extends HttpServlet {
                                 .add("description", "")
                                 .add("ds_pass", "")
                                 .add("ds_comment", "")
+                                .add("ds_grade", "")
                                 .add("md_pass", "")
                                 .add("md_comment", "")
-                                .add("grade", ""));
+                                .add("md_grade", ""));
                 builder.add("status",true)
                         .add("count", 0)
                         .add("student", zdmess);

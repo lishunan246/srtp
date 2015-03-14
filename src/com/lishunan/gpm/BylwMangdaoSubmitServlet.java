@@ -34,14 +34,16 @@ public class BylwMangdaoSubmitServlet extends HttpServlet {
         String saccount = request.getParameter("saccount");
         String pass = request.getParameter("pass");
         String comment = request.getParameter("comment");
+        String md_grade = request.getParameter("grade");
         Connection conn = null;
         try {
             conn = DB.getConn();
-            String sql = "update bylw set anonymouspass = ?, anonymouscomment = ? where saccount = ?";
+            String sql = "update bylw set anonymouspass = ?, anonymouscomment = ?, md_grade = ? where saccount = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString (1, "on".equals(pass) ? "1":"0");
             pstmt.setString (2, comment);
-            pstmt.setString (3, saccount);
+            pstmt.setString (3, md_grade);
+            pstmt.setString (4, saccount);
             int rs = pstmt.executeUpdate();
             if (rs > 0){
                 builder.add("status", true)

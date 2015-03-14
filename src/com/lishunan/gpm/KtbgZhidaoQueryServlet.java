@@ -52,9 +52,10 @@ public class KtbgZhidaoQueryServlet extends HttpServlet {
                         .add("description", rs.getString(5)  == null ? "" : rs.getString(5))
                         .add("ds_pass", rs.getString(6) == null ? "" : rs.getString(6))
                         .add("ds_comment", rs.getString(7) == null ? "" : rs.getString(7))
-                        .add("md_pass", rs.getString(8) == null ? "" : rs.getString(8))
-                        .add("md_comment", rs.getString(9) == null ? "" : rs.getString(9))
-                        .add("grade", rs.getString(10) == null ? "" : rs.getString(10));
+                        .add("ds_grade", rs.getString(8) == null ? "" : rs.getString(8))
+                        .add("md_pass", rs.getString(9) == null ? "" : rs.getString(9))
+                        .add("md_comment", rs.getString(10) == null ? "" : rs.getString(10))
+                        .add("md_grade", rs.getString(11) == null ? "" : rs.getString(11));
             }else{
                 builder.add("status",true)
                         .add("name_en", "")
@@ -63,9 +64,10 @@ public class KtbgZhidaoQueryServlet extends HttpServlet {
                         .add("description", "")
                         .add("ds_pass", "")
                         .add("ds_comment", "")
+                        .add("ds_grade", "")
                         .add("md_pass", "")
                         .add("md_comment", "")
-                        .add("grade", "");
+                        .add("md_grade", "");
             }
             pstmt.close();
         } catch (ClassNotFoundException e) {

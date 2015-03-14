@@ -35,15 +35,17 @@ public class KtbgZhidaoSubmitServlet extends HttpServlet {
         String saccount = request.getParameter("saccount");
         String pass = request.getParameter("pass");
         String comment = request.getParameter("comment");
+        String ds_grade = request.getParameter("grade");
         //out.print(saccount + " " + pass + " " + comment);
         Connection conn = null;
         try {
             conn = DB.getConn();
-            String sql = "update ktbg set supervisorpass = ?, supervisorcomment = ? where saccount = ?";
+            String sql = "update ktbg set supervisorpass = ?, supervisorcomment = ?, ds_grade = ? where saccount = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString (1, "on".equals(pass) ? "1":"0");
             pstmt.setString (2, comment);
-            pstmt.setString (3, saccount);
+            pstmt.setString (3, ds_grade);
+            pstmt.setString (4, saccount);
             int rs = pstmt.executeUpdate();
             if (rs > 0){
                 builder.add("status", true)

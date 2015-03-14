@@ -47,18 +47,20 @@ public class BylwZhidaoQueryServlet extends HttpServlet {
                         .add("uploaded", rs.getString(3) == null ? "" : rs.getString(3))
                         .add("supervisorpass", rs.getString(4) == null ? "" : rs.getString(4))
                         .add("supervisorcomment", rs.getString(5) == null ? "" : rs.getString(5))
-                        .add("anonymouspass", rs.getString(6) == null ? "" : rs.getString(6))
-                        .add("anonymouscomment", rs.getString(7) == null ? "" : rs.getString(7))
-                        .add("grade", rs.getString(8) == null ? "" : rs.getString(8));
+                        .add("ds_grade", rs.getString(6) == null ? "" : rs.getString(6))
+                        .add("anonymouspass", rs.getString(7) == null ? "" : rs.getString(7))
+                        .add("anonymouscomment", rs.getString(8) == null ? "" : rs.getString(8))
+                        .add("mdgrade", rs.getString(9) == null ? "" : rs.getString(9));
             }else{
                 builder.add("status",true)
                         .add("intro", "")
                         .add("uploaded", "")
                         .add("supervisorpass", "")
                         .add("supervisorcomment", "")
+                        .add("ds_grade", "")
                         .add("anonymouspass", "")
                         .add("anonymouscomment", "")
-                        .add("grade", "");
+                        .add("mdgrade", "");
             }
             pstmt.close();
         } catch (ClassNotFoundException e) {
