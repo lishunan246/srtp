@@ -7,6 +7,8 @@ $(document).ready(function(){
         var obj=JSON.parse(msg);
         if(obj.status)
         {
+            $("#nav_change_password").removeClass("hidden");
+            $("#nav_exit").removeClass("hidden");
             if ("student" == obj.type) {
                 $("#username").html("欢迎， " + obj.name + "同学").attr("href", "/");
             }
@@ -15,12 +17,12 @@ $(document).ready(function(){
             }
             else if ("admin" == obj.type) {
                 $("#username").html("欢迎， " + obj.name + "管理员").attr("href", "/admin.jsp");
+                $("#nav_admin").removeClass("hidden");
             }
         }
         else
         {
-            $("#username").html("请登录").attr("href","login.jsp");
-            if ($(location).attr('pathname') != "/login.jsp") {
+            if (($(location).attr('pathname') != "/login.jsp") && ($(location).attr('pathname') != "/")) {
                 window.location.href = "/login.jsp";
             }
 
