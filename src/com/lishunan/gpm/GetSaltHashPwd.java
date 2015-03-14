@@ -28,7 +28,7 @@ public class GetSaltHashPwd {
         }
         return generatedPassword;
     }
-    public static String getSalt() throws NoSuchAlgorithmException{
+    public static String getSalt() {
         SecureRandom sr=new SecureRandom();
         byte[] salt=new byte[16];
         sr.nextBytes(salt);

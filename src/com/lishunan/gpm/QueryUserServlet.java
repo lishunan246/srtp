@@ -1,6 +1,7 @@
 package com.lishunan.gpm;
 
 import javax.json.Json;
+import javax.json.JsonArray;
 import javax.json.JsonObjectBuilder;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -54,8 +55,8 @@ public class QueryUserServlet extends HttpServlet {
                 if(queryBy.equals("queryByName"))
                     pstmt.setString(1, name);
                 ResultSet rs = pstmt.executeQuery();
+                while(rs.next()) {
 
-                if(rs.next()) {
                     builder.add("account",rs.getString("account"))
                             .add("name",rs.getString("name"))
                             .add("type",rs.getString("type"));
