@@ -20,7 +20,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">搜索用户 <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">根据学号或工号</a></li>
+                                <li><a onclick="searchByUid()">根据学号或工号</a></li>
                                 <li><a href="#">根据姓名</a></li>
                             </ul>
                         </li>
