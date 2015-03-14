@@ -9,7 +9,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a id="username" class="navbar-brand" href="index.jsp">毕业设计</a>
+                    <a id="username" class="navbar-brand" href="login.jsp">请登录</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -25,8 +25,8 @@
                         <%--<button type="submit" class="btn btn-default">搜索</button>--%>
                         <%--</form>--%>
                         <%--</li>--%>
-                            <li><a href="changepassword.jsp">更改密码</a></li>
-                            <li><a onclick="logout()">退出</a></li>
+                            <li id="nav_change_password" class="hidden"><a href="changepassword.jsp">更改密码</a></li>
+                            <li id="nav_exit" class="hidden"><a onclick="logout()">退出</a></li>
 
                     </ul>
                 </div><!-- /.navbar-collapse -->

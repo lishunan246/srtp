@@ -7,6 +7,8 @@ $(document).ready(function(){
         var obj=JSON.parse(msg);
         if(obj.status)
         {
+            $("#nav_change_password").removeClass("hidden");
+            $("#nav_exit").removeClass("hidden");
             if ("student" == obj.type) {
                 $("#username").html("欢迎， " + obj.name + "同学").attr("href", "/");
             }
@@ -19,8 +21,7 @@ $(document).ready(function(){
         }
         else
         {
-            $("#username").html("请登录").attr("href","login.jsp");
-            if ($(location).attr('pathname') != "/login.jsp") {
+            if (($(location).attr('pathname') != "/login.jsp") && ($(location).attr('pathname') != "/")) {
                 window.location.href = "/login.jsp";
             }
 
