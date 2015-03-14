@@ -9,11 +9,22 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a id="username" class="navbar-brand" href="index.jsp">毕业设计</a>
+                    <a id="username" class="navbar-brand" href="login.jsp">请登录</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav hidden" id="nav_admin">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false">搜索用户 <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a onclick="searchByUid()">根据学号或工号</a></li>
+                                <li><a href="#">根据姓名</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                    
 
                     <ul class="nav navbar-nav navbar-right">
@@ -25,8 +36,8 @@
                         <%--<button type="submit" class="btn btn-default">搜索</button>--%>
                         <%--</form>--%>
                         <%--</li>--%>
-                            <li><a href="changepassword.jsp">更改密码</a></li>
-                            <li><a onclick="logout()">退出</a></li>
+                            <li id="nav_change_password" class="hidden"><a href="changepassword.jsp">更改密码</a></li>
+                            <li id="nav_exit" class="hidden"><a onclick="logout()">退出</a></li>
 
                     </ul>
                 </div><!-- /.navbar-collapse -->
