@@ -17,6 +17,7 @@ $(document).ready(function(){
             }
             else if ("admin" == obj.type) {
                 $("#username").html("欢迎， " + obj.name + "管理员").attr("href", "/admin.jsp");
+                $("#nav_admin").removeClass("hidden");
             }
         }
         else

@@ -14,6 +14,17 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    <ul class="nav navbar-nav hidden" id="nav_admin">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false">搜索用户 <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">根据学号或工号</a></li>
+                                <li><a href="#">根据姓名</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                    
 
                     <ul class="nav navbar-nav navbar-right">
