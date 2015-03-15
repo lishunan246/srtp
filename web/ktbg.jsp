@@ -22,38 +22,37 @@ status
                 <%@include file="panels.jsp" %>
             </div>
             <div class="col-md-7">
-                <div class="container" id="right-part">
-                    <form id="ktbg-form" role="form" action="ktbg.do" method="post">
-                         <div class="form-group">
-                            <label for="name-en">毕业设计名称（英文）</label>
-                             <input class="form-control" name="name-en" id="name-en" type="text" placeholder="">
-                         </div>
-                         <div class="form-group">
-                            <label for="name-cn">毕业设计名称（中文）</label>
-                             <input class="form-control" name="name-cn" id="name-cn" type="text" placeholder="">
-                         </div>
-                         <div class="form-group">
-                            <label>类别</label>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="ktbg-type" value="lw" checked>
-                                        毕业论文
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="ktbg-type" value="sj">
-                                        毕业设计
-                                    </label>
-                                </div>
+                <form id="ktbg-form" role="form" action="ktbg.do" method="post">
+                    <div class="form-group">
+                        <label for="name-en">毕业设计名称（英文）</label>
+                        <input class="form-control" name="name-en" id="name-en" type="text" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="name-cn">毕业设计名称（中文）</label>
+                        <input class="form-control" name="name-cn" id="name-cn" type="text" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label>类别</label>
+
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="ktbg-type" value="lw" checked>
+                                毕业论文
+                            </label>
                         </div>
-                        <div class="form-group">
-                            <label for="description">文献综述和开题报告要求</label>
-                            <textarea name="description" id="description" class="form-control" rows="5"></textarea>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="ktbg-type" value="sj">
+                                毕业设计
+                            </label>
                         </div>
-                        <button type="submit" class="btn btn-primary">提交</button>
-                    </form>
-                </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">文献综述和开题报告要求</label>
+                        <textarea name="description" id="description" class="form-control" rows="5"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">提交</button>
+                </form>
             </div>
         </div>
 
