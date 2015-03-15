@@ -28,6 +28,9 @@
                         <li>
                             <a href="admin_newuser.jsp">新建用户</a>
                         </li>
+                        <li>
+                            <a href="admin_resetpw.jsp">为其他用户重置密码</a>
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">设置师生关系 <span class="caret"></span></a>
