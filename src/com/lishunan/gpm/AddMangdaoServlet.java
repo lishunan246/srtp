@@ -32,6 +32,18 @@ public class AddMangdaoServlet extends HttpServlet {
         }
         String saccount = request.getParameter("saccount");
         String mdaccount= request.getParameter("mdaccount");
+        if(!IsUserExist.check(saccount,"student")){
+            builder.add("status", false)
+                    .add("message", "该学生不存在！");
+            out.print(builder.build());
+            return;
+        }
+        if(!IsUserExist.check(mdaccount,"teacher")){
+            builder.add("status", false)
+                    .add("message", "该教师不存在！");
+            out.print(builder.build());
+            return;
+        }
         Connection conn = null;
         try {
             conn = DB.getConn();
