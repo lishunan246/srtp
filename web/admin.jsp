@@ -25,6 +25,14 @@
 
             </div>
 
+            <table id="table_search_result" class="table">
+                <tr>
+                    <td>学工号</td>
+                    <td>姓名</td>
+                    <td>类型</td>
+                    <td>操作</td>
+                </tr>
+            </table>
 
         </form>
     </div>
@@ -33,6 +41,7 @@
 
 <script>
     $("#form_search").submit(function () {
+        $(".result").remove();
         var data = {
             "uid": $("#uid").val()
         };
@@ -63,7 +72,13 @@
                 alert(obj.message);
             }
             else {
-                alert(msg);
+                if (obj.count == 0) {
+                    alert("无符合的结果");
+                    return false;
+                }
+                for (var i = 0; i < obj.count; i++) {
+                    $("#table_search_result").append('<tr class="result"><td>' + obj.user[i].account + '</td><td>' + obj.user[i].name + '</td><td>' + obj.user[i].type + '</td></tr>');
+                }
             }
         });
         return false;
