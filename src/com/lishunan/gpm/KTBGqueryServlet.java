@@ -32,7 +32,7 @@ public class KTBGqueryServlet extends HttpServlet {
             return;
         }
         String saccount = (String)request.getSession().getAttribute("username");
-        Connection conn;
+        Connection conn = null;
         try {
             conn = DB.getConn();
             String sql;
@@ -80,8 +80,16 @@ public class KTBGqueryServlet extends HttpServlet {
             e.printStackTrace();
             builder.add("status", false)
                     .add("message", "未知错误");
+        }finally {
+            out.print(builder.build());
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-        out.print(builder.build());
     }
 
     @Override

@@ -43,9 +43,6 @@ public class ReturnUserInfo  extends HttpServlet {
                     .add("account", rs.getString(1))
                     .add("name", rs.getString(3))
                     .add("type", rs.getString(4));
-
-            out.print(builder.build());
-
         } catch (ClassNotFoundException e) {
             //e.printStackTrace();
             System.out.println(0);
@@ -53,9 +50,6 @@ public class ReturnUserInfo  extends HttpServlet {
                     .add("account", "null")
                     .add("name", "null")
                     .add("type", "null");
-
-            out.print(builder.build());
-
         } catch (SQLException e) {
             //e.printStackTrace();
             //System.out.println(1);
@@ -63,7 +57,12 @@ public class ReturnUserInfo  extends HttpServlet {
                     .add("account", "null")
                     .add("name", "null")
                     .add("type", "null");
-
+        }finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             out.print(builder.build());
         }
     }
