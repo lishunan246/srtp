@@ -10,87 +10,42 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <!-- Begin page content -->
 
-<div class="modal fade" id="modal_uid">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">根据学号、工号搜索用户</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <div class="input-group">
-                        <input type="text" id="uid" class="form-control" placeholder="输入学号">
-
-                    </div>
-                    <!-- /input-group -->
-
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="doSearchByUid()" data-dismiss="modal">搜索</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
 
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
-        <form id="query-form" role="form">
+        <form id="form_search" role="form">
             <div class="form-group">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="输入学号">
+                    <input type="text" id="uid" class="form-control" placeholder="输入学号">
                 <span class="input-group-btn">
-                    <button class="btn btn-primry" type="button">搜索</button>
+                    <button class="btn btn-primry" type="submit">搜索</button>
                 </span>
                 </div>
                 <!-- /input-group -->
 
             </div>
 
-            <%--<div class="form-group">--%>
-            <%--<div class="input-group">--%>
-            <%--<input type="text" id="uname" class="form-control" placeholder="输入姓名">--%>
-            <%--<span class="input-group-btn">--%>
-            <%--<button class="btn btn-primry" type="button">搜索</button>--%>
-            <%--</span>--%>
-            <%--</div>--%>
-            <%--<!-- /input-group -->--%>
-            <%--</div>--%>
+            <table id="table_search_result" class="table">
+                <tr>
+                    <td>学工号</td>
+                    <td>姓名</td>
+                    <td>类型</td>
+                    <td>操作</td>
+                </tr>
+            </table>
 
         </form>
     </div>
-    <%--<div class="col-md-7">--%>
-    <%--<div class="container" id="right-part">--%>
-    <%--<dl class="dl-horizontal">--%>
-    <%--<dt>姓名</dt>--%>
-    <%--<dd>施潮浩</dd>--%>
-    <%--<dt>学号/工号</dt>--%>
-    <%--<dd>3120102119</dd>--%>
-    <%--<dt>账号类型</dt>--%>
-    <%--<dd>学生</dd>--%>
-    <%--<dt>操作</dt>--%>
-    <%--<dd><a href="#">重设密码为用户id</a></dd>--%>
-    <%--</dl>--%>
 
-
-    <%--</div>--%>
-    <%--</div>--%>
 </div>
 
 <script>
-    function searchByUid() {
-        $("#modal_uid").modal('toggle');
-    }
-
-    function doSearchByUid() {
+    $("#form_search").submit(function () {
+        $(".result").remove();
         var data = {
             "uid": $("#uid").val()
         };
+
         $.ajax({
             type: "POST",
             url: "queryUser.do",
@@ -117,11 +72,17 @@
                 alert(obj.message);
             }
             else {
-
+                if (obj.count == 0) {
+                    alert("无符合的结果");
+                    return false;
+                }
+                for (var i = 0; i < obj.count; i++) {
+                    $("#table_search_result").append('<tr class="result"><td>' + obj.user[i].account + '</td><td>' + obj.user[i].name + '</td><td>' + obj.user[i].type + '</td></tr>');
+                }
             }
-        })
-
-    }
+        });
+        return false;
+    })
 </script>
 
 <%@include file="footer.jsp" %>

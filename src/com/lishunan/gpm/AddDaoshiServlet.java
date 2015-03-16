@@ -32,6 +32,18 @@ public class AddDaoshiServlet extends HttpServlet{
         }
         String saccount = request.getParameter("saccount");
         String dsaccount= request.getParameter("dsaccount");
+        if(!IsUserExist.check(saccount,"student")){
+            builder.add("status", false)
+                    .add("message", "该学生不存在！");
+            out.print(builder.build());
+            return;
+        }
+        if(!IsUserExist.check(dsaccount,"teacher")){
+            builder.add("status", false)
+                    .add("message", "该教师不存在！");
+            out.print(builder.build());
+            return;
+        }
         Connection conn = null;
         try {
             conn = DB.getConn();

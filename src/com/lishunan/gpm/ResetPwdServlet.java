@@ -55,6 +55,10 @@ public class ResetPwdServlet extends HttpServlet {
                 }
 
             }
+            else{
+                builder.add("status", false)
+                        .add("message", "该生不存在！");
+            }
             out.print(builder.build());
             pstmt.close();
         } catch (ClassNotFoundException e) {

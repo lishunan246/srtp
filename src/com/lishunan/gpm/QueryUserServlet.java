@@ -2,6 +2,7 @@ package com.lishunan.gpm;
 
 import javax.json.Json;
 import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +18,7 @@ import java.sql.SQLException;
 /**
  * Created by chenxin on 2015/3/12.
  * 传入参数：uid（账号）或者uname（姓名）中的一个（不可同时）
- * 返回参数：account（账号），name（姓名），type（用户类型）
+ * 返回参数：count(符合条件的用户数）  user（代表用户的json数组，分为account（账号），name（姓名），type（用户类型））
  */
 public class QueryUserServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -25,7 +26,7 @@ public class QueryUserServlet extends HttpServlet {
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
         JsonObjectBuilder builder = Json.createObjectBuilder();
-
+        JsonArrayBuilder user = Json.createArrayBuilder();
         if (!JudgePeopleType.judge(request, response).equals("admin")) {
             builder.add("status", false)
                     .add("message","权限不够!");
@@ -55,14 +56,18 @@ public class QueryUserServlet extends HttpServlet {
                 if(queryBy.equals("queryByName"))
                     pstmt.setString(1, name);
                 ResultSet rs = pstmt.executeQuery();
+                int count=0;
                 while(rs.next()) {
-
-                    builder.add("account",rs.getString("account"))
+                    count++;
+                    user.add(Json.createObjectBuilder()
+                            .add("account",rs.getString("account"))
                             .add("name",rs.getString("name"))
-                            .add("type",rs.getString("type"));
+                            .add("type",rs.getString("type")));
                 }
                 builder.add("status", true)
-                        .add("message", "success");
+                        .add("message", "success")
+                         .add("count",count)
+                         .add("user",user);
 
                 pstmt.close();
             }
