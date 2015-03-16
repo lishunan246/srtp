@@ -11,7 +11,7 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <!-- Begin page content -->
 
-<div class="modal fade" id="modal_ms">
+<div class="modal fade" id="modal_ktbg">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -19,14 +19,14 @@
                         aria-hidden="true">&times;</span></button>
                 <dl>
                     <dt>英文名</dt>
-                    <dd id="name_en"></dd>
+                    <dd id="name_en_ktbg"></dd>
 
                     <dt>中文名</dt>
-                    <dd id="name_cn"></dd>
+                    <dd id="name_cn_ktbg"></dd>
                     <dt>类型</dt>
-                    <dd id="type"></dd>
+                    <dd id="type_ktbg"></dd>
                     <dt>描述</dt>
-                    <dd id="description"></dd>
+                    <dd id="description_ktbg"></dd>
                 </dl>
             </div>
             <div class="modal-body">
@@ -38,33 +38,33 @@
 
                         <div class="radio">
                             <label>
-                                <input type="radio" name="md_pass" value="0" checked>
+                                <input type="radio" name="pass_ktbg" value="0" checked>
                                 不通过
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="md_pass" value="1">
+                                <input type="radio" name="pass_ktbg" value="1">
                                 通过
                             </label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="grade">评分</label>
-                        <input class="form-control" id="grade" type="number" placeholder="">
+                        <label for="grade_ktbg">评分</label>
+                        <input class="form-control" id="grade_ktbg" type="number" placeholder="">
                     </div>
 
                     <div class="form-group">
-                        <label for="md_comment">盲审评语</label>
-                        <textarea id="md_comment" class="form-control" rows="5"></textarea>
+                        <label for="comment_ktbg">评语</label>
+                        <textarea id="comment_ktbg" class="form-control" rows="5"></textarea>
                     </div>
                     <!-- /input-group -->
 
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="ms(saccount)" data-dismiss="modal">保存</button>
+                <button type="button" class="btn btn-primary" id="button_ktbg" data-dismiss="modal">保存</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -81,7 +81,7 @@
     <div class="col-md-7">
         <div class="container" id="right-part">
             <div class="tabbable" id="tabs-874202">
-                <ul class="nav nav-pills">
+                <ul class="nav nav-tabs nav-justified">
                     <li class="active">
                         <a href="#panel-877184" data-toggle="tab">您指导的学生 <span id="ds_count"
                                                                                class="badge">...</span></a>
@@ -93,8 +93,8 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="panel-877184">
-                        <table id="ds_table" class="table table-hover table-bordered">
-                            <tr class="info">
+                        <table id="ds_table" class="table">
+                            <tr>
                                 <td>学号</td>
                                 <td>姓名</td>
                                 <td>毕业论文/设计</td>
@@ -102,8 +102,8 @@
                         </table>
                     </div>
                     <div class="tab-pane" id="panel-832086">
-                        <table id="md_table" class="table table-hover table-bordered">
-                            <tr class="info">
+                        <table id="md_table" class="table">
+                            <tr>
                                 <td>学号</td>
                                 <td>姓名</td>
                                 <td>毕业论文/设计</td>
@@ -118,7 +118,9 @@
 </div>
 
 <script>
-    $(document).ready(function () {
+
+    function get_ktbg() {
+        $(".result").remove();
         $.ajax({
             type: "GET",
             url: "ktbgmangdaolist.do",
@@ -144,8 +146,9 @@
                 alert(obj.message);
             }
             else {
+                $("#md_count").text(obj.count);
                 if (obj.count) {
-                    $("#md_count").text(obj.count);
+
                     for (var i = 0; i < obj.count; i++) {
                         var temp;
                         if (obj.student[i].md_pass) {
@@ -155,22 +158,175 @@
                             temp = "未通过";
                         }
                         $("#md_table").append(
-                                '<tr onclick="ms_query(' + obj.student[i].sid + ')"><td>' + obj.student[i].sid + '</td> <td>' + obj.student[i].sname + '</td> <td>' + obj.student[i].name_cn + '</td><td>' + temp + '</td></tr>'
+                                '<tr class="result" onclick="ktbg_query(' + "'" + "md" + "'" + ',' + obj.student[i].sid + ')"><td>' + obj.student[i].sid + '</td> <td>' + obj.student[i].sname + '</td> <td>' + obj.student[i].name_cn + '</td><td>' + temp + '</td></tr>'
                         );
 
 
                     }
-                } else {
-                    alert("no one");
+                }
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "ktbgzhidaolist.do",
+            timeout: 500,
+            statusCode: {
+                500: function () {
+                    alert(" 500 data still loading");
+                    console.log('500 ');
+                }
+            },
+            error: function (request, status, err) {
+                if (status == "timeout") {
+                    showError("服务器无响应");
+                }
+                else {
+                    alert(request + status + err);
+                }
+            }
+        }).done(function (msg) {
+            console.log(msg);
+            var obj = JSON.parse(msg);
+            if (!obj.status) {
+                alert(obj.message);
+            }
+            else {
+                $("#ds_count").text(obj.count);
+                if (obj.count) {
+
+                    for (var i = 0; i < obj.count; i++) {
+                        var temp;
+                        if (obj.student[i].md_pass) {
+                            temp = "已通过";
+                        }
+                        else {
+                            temp = "未通过";
+                        }
+                        $("#ds_table").append(
+                                '<tr class="result" onclick="ktbg_query(' + "'" + "ds" + "'" + ',' + obj.student[i].sid + ')"><td>' + obj.student[i].sid + '</td> <td>' + obj.student[i].sname + '</td> <td>' + obj.student[i].name_cn + '</td><td>' + temp + '</td></tr>'
+                        );
+
+
+                    }
                 }
             }
         })
-    });
+    }
 
-    function ms_query(saccount) {
+    function get_bylw() {
+        $(".result").remove();
         $.ajax({
             type: "GET",
-            url: "ktbgmangdaoquery.do",
+            url: "bylwmangdaolist.do",
+            timeout: 500,
+            statusCode: {
+                500: function () {
+                    alert(" 500 data still loading");
+                    console.log('500 ');
+                }
+            },
+            error: function (request, status, err) {
+                if (status == "timeout") {
+                    showError("服务器无响应");
+                }
+                else {
+                    alert(request + status + err);
+                }
+            }
+        }).done(function (msg) {
+            console.log(msg);
+            var obj = JSON.parse(msg);
+            if (!obj.status) {
+                alert(obj.message);
+            }
+            else {
+                $("#md_count").text(obj.count);
+                if (obj.count) {
+
+                    for (var i = 0; i < obj.count; i++) {
+                        var temp;
+                        if (obj.student[i].md_pass) {
+                            temp = "已通过";
+                        }
+                        else {
+                            temp = "未通过";
+                        }
+                        $("#md_table").append(
+                                '<tr class="result" onclick="bylw_query(' + "'" + "md" + "'" + ',' + obj.student[i].sid + ')"><td>' + obj.student[i].sid + '</td> <td>' + obj.student[i].sname + '</td> <td>' + obj.student[i].name_cn + '</td><td>' + temp + '</td></tr>'
+                        );
+
+
+                    }
+                }
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "bylwzhidaolist.do",
+            timeout: 500,
+            statusCode: {
+                500: function () {
+                    alert(" 500 data still loading");
+                    console.log('500 ');
+                }
+            },
+            error: function (request, status, err) {
+                if (status == "timeout") {
+                    showError("服务器无响应");
+                }
+                else {
+                    alert(request + status + err);
+                }
+            }
+        }).done(function (msg) {
+            console.log(msg);
+            var obj = JSON.parse(msg);
+            if (!obj.status) {
+                alert(obj.message);
+            }
+            else {
+                $("#ds_count").text(obj.count);
+                if (obj.count) {
+
+                    for (var i = 0; i < obj.count; i++) {
+                        var temp;
+                        if (obj.student[i].md_pass) {
+                            temp = "已通过";
+                        }
+                        else {
+                            temp = "未通过";
+                        }
+                        $("#ds_table").append(
+                                '<tr class="result" onclick="bylw_query(' + "'" + "ds" + "'" + ',' + obj.student[i].sid + ')"><td>' + obj.student[i].sid + '</td> <td>' + obj.student[i].sname + '</td> <td>' + obj.student[i].name_cn + '</td><td>' + temp + '</td></tr>'
+                        );
+
+
+                    }
+                }
+            }
+        })
+    }
+
+    $(document).ready(function () {
+        get_ktbg();
+    });
+
+    function ktbg_query(type1, saccount) {
+        var url;
+        var postfix = "_ktbg";
+        if (type1 == "ds") {
+            url = "ktbgdaoshiquery.do";
+
+        }
+        else {
+            url = "ktbgmangdaoquery.do";
+        }
+
+        $.ajax({
+            type: "GET",
+            url: url,
             data: {
                 "saccount": saccount
             },
@@ -196,8 +352,8 @@
                 alert(obj.message);
             }
             else {
-                $("#name_en").text(obj.name_en);
-                $("#name_cn").text(obj.name_cn);
+                $("#name_en" + postfix).text(obj.name_en);
+                $("#name_cn" + postfix).text(obj.name_cn);
                 var type;
                 if (obj.type == "lw")
                     type = "毕业论文";
@@ -206,17 +362,31 @@
                 else
                     type = "?";
 
-                $("#type").text(type);
-                $("#description").text(obj.description);
-                $("#md_comment").val(obj.md_comment);
-                if (obj.md_pass == "")
-                    obj.md_pass = "0";
-                $('input[name="md_pass"][value="' + obj.md_pass + '"]').prop('checked', true);
-                $("#modal_ms").modal("toggle");
+                var comment;
+                var pass;
+
+                if (type1 == "ds") {
+                    pass = obj.ds_pass;
+                    comment = obj.ds_pass;
+                }
+                else {
+                    pass = obj.md_pass;
+                    comment = obj.md_pass;
+                }
+
+                $("#type" + postfix).text(type);
+                $("#description" + postfix).text(obj.description);
+                $("#comment" + postfix).val(comment);
+                if (pass == "")
+                    pass = "0";
+                $('input[name="pass' + postfix + '"][value="' + pass + '"]').prop('checked', true);
+                $("#modal" + postfix).modal("toggle");
 
             }
         })
     }
+
+
 </script>
 
 <%@include file="footer.jsp" %>
