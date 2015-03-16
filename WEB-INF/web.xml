@@ -285,4 +285,24 @@
         <servlet-name>DeleteUserServlet</servlet-name>
         <url-pattern>/deleteUser.do</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>KtbgUploadServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.KtbgUploadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>KtbgUploadServlet</servlet-name>
+        <url-pattern>/ktbgupload.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>KtbgDownloadServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.KtbgDownloadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>KtbgDownloadServlet</servlet-name>
+        <url-pattern>/ktbgdownload.do</url-pattern>
+    </servlet-mapping>
 </web-app>

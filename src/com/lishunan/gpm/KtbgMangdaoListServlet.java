@@ -65,7 +65,7 @@ public class KtbgMangdaoListServlet extends HttpServlet {
                 builder.add("status", true)
                         .add("count", count)
                         .add("student",mdmess);
-                out.print(builder.build());
+                pstmt.close();
             }else{
                 mdmess.add(Json.createObjectBuilder()
                         .add("sid", "")
@@ -90,6 +90,13 @@ public class KtbgMangdaoListServlet extends HttpServlet {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            out.print(builder.build());
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 

@@ -31,7 +31,7 @@ public class BylwQueryServlet extends HttpServlet {
             return;
         }
         String saccount = (String)request.getSession().getAttribute("username");
-        Connection conn;
+        Connection conn = null;
         try {
             conn = DB.getConn();
             String sql;
@@ -56,6 +56,7 @@ public class BylwQueryServlet extends HttpServlet {
                         .add("anonymouspass", rs.getString(7) == null ? "" : rs.getString(7))
                         .add("anonymouscomment", rs.getString(8) == null ? "" : rs.getString(8))
                         .add("mdgrade", rs.getString(9) == null ? "" : rs.getString(9));
+                pstmt.close();
             }else{
                 builder.add("status",true)
                         .add("intro", "")
@@ -75,8 +76,16 @@ public class BylwQueryServlet extends HttpServlet {
             e.printStackTrace();
             builder.add("status", false)
                     .add("message", "未知错误");
+        }finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            out.print(builder.build());
         }
-        out.print(builder.build());
     }
 
     @Override

@@ -72,9 +72,21 @@ public class BylwServlet extends HttpServlet {
             out.print(builder.build());
             pstmt.close();
         } catch (ClassNotFoundException e) {
+            builder.add("status", false)
+                    .add("message", "未知错误");
             e.printStackTrace();
         } catch (SQLException e) {
+            builder.add("status", false)
+                    .add("message", "未知错误");
             e.printStackTrace();
+        }finally {
+            out.print(builder.build());
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 

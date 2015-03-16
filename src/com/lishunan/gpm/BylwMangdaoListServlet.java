@@ -64,6 +64,7 @@ public class BylwMangdaoListServlet extends HttpServlet {
                         .add("count", count)
                         .add("student",zdmess);
                 out.print(builder.build());
+                pstmt3.close();
             }else{
                 zdmess.add(Json.createObjectBuilder()
                         .add("sid", "")
@@ -85,6 +86,14 @@ public class BylwMangdaoListServlet extends HttpServlet {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
