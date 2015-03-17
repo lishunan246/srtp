@@ -305,4 +305,24 @@
         <servlet-name>KtbgDownloadServlet</servlet-name>
         <url-pattern>/ktbgdownload.do</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BylwUploadServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.BylwUploadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BylwUploadServlet</servlet-name>
+        <url-pattern>/bylwupload.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BylwDownloadServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.BylwDownloadServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>BylwDownloadServlet</servlet-name>
+        <url-pattern>/bylwdownload.do</url-pattern>
+    </servlet-mapping>
 </web-app>

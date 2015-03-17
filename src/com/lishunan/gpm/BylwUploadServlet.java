@@ -2,7 +2,6 @@ package com.lishunan.gpm;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.filefilter.SuffixFileFilter;
@@ -14,20 +13,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created by Administrator on 2015/3/16.
+ * Created by Administrator on 2015/3/17.
  */
-public class KtbgUploadServlet extends HttpServlet {
+public class BylwUploadServlet extends HttpServlet {
 
     @Override
     public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,7 +39,7 @@ public class KtbgUploadServlet extends HttpServlet {
             return;
         }
         String saccount = request.getSession().getAttribute("username").toString();
-        String uploadPath = getServletContext().getRealPath("/") + "开题报告" + "\\" + saccount;
+        String uploadPath = getServletContext().getRealPath("/") + "毕业论文" + "\\" + saccount;
         File folder = new File (uploadPath);
         if (folder.exists()){
             if (folder.isDirectory()){
@@ -78,7 +75,7 @@ public class KtbgUploadServlet extends HttpServlet {
                             break;
                         }
 
-                        String sql = "update ktbg set filepath = ? where saccount = ?";
+                        String sql = "update bylw set filepath = ? where saccount = ?";
 
                         PreparedStatement pstmt = conn.prepareStatement(sql);
                         pstmt.setString(1, uploadPath + "\\" + saccount + "_" +fileName);

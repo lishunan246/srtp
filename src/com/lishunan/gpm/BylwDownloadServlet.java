@@ -13,9 +13,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Created by Administrator on 2015/3/16.
+ * Created by Administrator on 2015/3/17.
  */
-public class KtbgDownloadServlet extends HttpServlet {
+public class BylwDownloadServlet extends HttpServlet {
     public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset = utf-8");
@@ -32,7 +32,7 @@ public class KtbgDownloadServlet extends HttpServlet {
         }
         try {
             Connection conn = DB.getConn();
-            String sql = "select filepath from ktbg where saccount = ?";
+            String sql = "select filepath from bylw where saccount = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, saccount);
             ResultSet rs = pstmt.executeQuery();
@@ -81,3 +81,4 @@ public class KtbgDownloadServlet extends HttpServlet {
         doPost (request, response);
     }
 }
+
