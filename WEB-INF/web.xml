@@ -325,4 +325,24 @@
         <servlet-name>BylwDownloadServlet</servlet-name>
         <url-pattern>/bylwdownload.do</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ForgetPasswordServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.ForgetPasswordServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ForgetPasswordServlet</servlet-name>
+        <url-pattern>/forgetPassword.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>FindPasswordServlet</servlet-name>
+        <servlet-class>com.lishunan.gpm.FindPasswordServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>FindPasswordServlet</servlet-name>
+        <url-pattern>/findPassword.do</url-pattern>
+    </servlet-mapping>
 </web-app>
