@@ -52,6 +52,32 @@
             <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
         </div>
     </script>
+    <script type="text/ng-template" id="BYLWmangdao.html">
+        <div class="modal-header">
+            <h3 class="modal-title">评估毕业论文(盲审)</h3>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label for="grade">分数</label>
+                    <input type="number" id="grade" ng-model="grade">
+                </div>
+                <div class="form-group">
+                    <label for="comment">评论</label>
+                    <input type="text" id="comment" ng-model="comment">
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="pass"> 予以通过
+                    </label>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="okBYLWmangdao()">提交</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
+        </div>
+    </script>
     <div ng-controller="bylwListController" class="col-md-7">
         <div class="container" id="right-part">
             <table class="table table-hover table-bordered">
@@ -76,7 +102,7 @@
                     <td>是否通过</td>
                     <td>类型</td>
                 </tr>
-                <tr ng-repeat="x in m">
+                <tr ng-repeat="x in m" ng-click="openMangdao(x.sid)">
                     <td>{{x.sid}}</td>
                     <td>{{x.sname}}</td>
                     <td>{{x.anonymouspass?"是":"否"}}</td>

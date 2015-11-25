@@ -35,6 +35,17 @@ angular.module('App')
                 }
             });
         };
+        $scope.openMangdao=function(id){
+            var modal=$uibModal.open({
+                templateUrl:'BYLWmangdao.html',
+                controller:'BYLWmangdaoCtrl',
+                resolve:{
+                    id:function(){
+                        return id;
+                    }
+                }
+            });
+        };
     });
 
 angular.module('App').controller('BYLWzhidaoCtrl',function($scope, $uibModalInstance,id,$http){
@@ -76,4 +87,45 @@ angular.module('App').controller('BYLWzhidaoCtrl',function($scope, $uibModalInst
     };
 
     $scope.getZhidao();
+});
+
+angular.module('App').controller('BYLWmangdaoCtrl',function($scope, $uibModalInstance,id,$http){
+    $scope.id=parseInt(id);
+
+    $scope.getMangdao=function(){
+        $http.post('/bylwmangdaoquery.do',{'saccount':$scope.id}).success(function(msg){
+            console.log(msg);
+            if(!msg.status){
+                alert(msg.message);
+            }
+            else {
+                $scope.grade=msg.mdgrade;
+                $scope.pass=msg.anonymouspass;
+                $scope.comment=msg.anonymouscomment;
+            }
+        })
+    };
+
+    $scope.okBYLWmangdao = function () {
+        $http.post('/bylwmangdaosubmit.do',{
+            saccount:$scope.id,
+            comment:$scope.comment,
+            pass:$scope.pass,
+            grade:$scope.grade
+        }).success(function(msg){
+            if(!msg.status){
+                alert(msg.message);
+            }
+            else {
+                alert('修改成功');
+            }
+            $scope.getMangdao();
+        });
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+
+    $scope.getMangdao();
 });
