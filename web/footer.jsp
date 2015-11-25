@@ -5,6 +5,7 @@
         </div>
 
         <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
         <script src="js/vendor/jquery.ui.widget.js"></script>
         <script src="js/jquery.iframe-transport.js"></script>
         <script src="js/jquery.fileupload.js"></script>

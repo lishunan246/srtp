@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html; charset=utf-8"%>
-<html lang="zh-cn">
+<html ng-app="App" lang="zh-cn">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +10,9 @@
 
         <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
         <link href="sticky-footer.css" rel="stylesheet">
+        <script src="js/angular.js"></script>
+        <script src="js/ui-bootstrap-tpls-0.14.3.js"></script>
+        <script src="js/panelController.js"></script>
     </head>
 
     <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>

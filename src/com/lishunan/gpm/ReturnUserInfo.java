@@ -21,6 +21,7 @@ public class ReturnUserInfo  extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=utf-8");
+        response.setHeader("Access-Control-Allow-Origin", "*");
         String account = (String)request.getSession().getAttribute("username");
         Connection conn = null;
         JsonObjectBuilder builder= Json.createObjectBuilder();
