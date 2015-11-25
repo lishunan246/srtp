@@ -31,7 +31,7 @@
         var url = "addDaoshi.do";
         var data = {
             saccount: $("#saccount").val(),
-            account: $("#account").val()
+            dsaccount: $("#dsaccount").val()
         };
         console.log(JSON.stringify(data));
         $.ajax({

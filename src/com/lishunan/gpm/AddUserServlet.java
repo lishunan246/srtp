@@ -34,7 +34,7 @@ public class AddUserServlet extends HttpServlet {
         String name=request.getParameter("name");
         String type = request.getParameter("type");
         String major=request.getParameter("major");
-        String major2=request.getParameter("major2");
+//        String major2=request.getParameter("major2");
         String salt= GetSaltHashPwd.getSalt();
         String password=GetSaltHashPwd.getSecurePassword(account, salt);
 
@@ -42,7 +42,7 @@ public class AddUserServlet extends HttpServlet {
         try {
             conn = DB.getConn();
             if(type.equals("teacher")){
-                if(name.equals("")||major.equals("")||major2.equals("")||account.equals("")){
+                if(name.equals("")||major.equals("")||account.equals("")){
                     builder.add("status", false)
                             .add("message", "信息不完整！");
                     out.print(builder.build());
@@ -53,7 +53,7 @@ public class AddUserServlet extends HttpServlet {
                 pstmt.setString(1,account);
                 pstmt.setString(2,password);
                 pstmt.setString(3,major);
-                pstmt.setString(4,major2);
+                pstmt.setString(4,"");
                 int result1 = pstmt.executeUpdate();
                 sql="INSERT INTO people VALUES (?,?,?,?,?)";
                 pstmt = conn.prepareStatement(sql);
