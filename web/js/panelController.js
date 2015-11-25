@@ -23,7 +23,7 @@ angular.module('App').controller('ModalInstanceCtrl',['$scope','fileUpload',func
         console.dir(file);
 
         fileUpload.uploadFileToUrl(file, uploadUrl);
-        $uibModalInstance.dismiss('cancel');
+        //$uibModalInstance.dismiss('cancel');
     };
 }]);
 
@@ -58,6 +58,9 @@ app.service('fileUpload', ['$http', function ($http) {
                 if(data.status)
                 {
                     alert('上传成功');
+                }
+                else{
+                    alert(data.message);
                 }
             })
             .error(function (data) {

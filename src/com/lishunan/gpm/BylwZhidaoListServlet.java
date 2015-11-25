@@ -63,6 +63,7 @@ public class BylwZhidaoListServlet extends HttpServlet {
                 builder.add("status", true)
                         .add("count", count)
                         .add("student",zdmess);
+                out.print(builder.build());
                 pstmt3.close();
             }else{
                 zdmess.add(Json.createObjectBuilder()
@@ -86,7 +87,6 @@ public class BylwZhidaoListServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
-            out.print(builder.build());
             try {
                 if (conn != null)
                     conn.close();

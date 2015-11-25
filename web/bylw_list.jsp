@@ -20,32 +20,41 @@
 <%@include file="navbar.jsp" %>
 <%@ page contentType="text/html; charset=utf-8" %>
 <!-- Begin page content -->
+
+
 <div class="row">
     <div class="col-md-3 col-md-offset-1">
         <%@include file="teacher_panels.jsp" %>
     </div>
-    <div class="col-md-7">
+    <div ng-controller="bylwListController" class="col-md-7">
         <div class="container" id="right-part">
             <table class="table table-hover table-bordered">
                 <tr class="info">
                     <td>学号</td>
                     <td>姓名</td>
-                    <td>毕业论文/设计</td>
+                    <td>是否通过</td>
+                    <td>类型</td>
                 </tr>
-                <tr>
+                <tr ng-repeat="x in z">
+                    <td>{{x.sid}}</td>
+                    <td>{{x.sname}}</td>
+                    <td>{{x.supervisorpass?"是":"否"}}</td>
+                    <td>指导</td>
+                </tr>
+            </table>
+
+            <table class="table table-hover table-bordered">
+                <tr class="info">
                     <td>学号</td>
                     <td>姓名</td>
-                    <td>毕业论文/设计</td>
+                    <td>是否通过</td>
+                    <td>类型</td>
                 </tr>
-                <tr>
-                    <td>学号</td>
-                    <td>姓名</td>
-                    <td>毕业论文/设计</td>
-                </tr>
-                <tr>
-                    <td>学号</td>
-                    <td>姓名</td>
-                    <td>毕业论文/设计</td>
+                <tr ng-repeat="x in m">
+                    <td>{{x.sid}}</td>
+                    <td>{{x.sname}}</td>
+                    <td>{{x.anonymouspass?"是":"否"}}</td>
+                    <td>盲审</td>
                 </tr>
             </table>
         </div>
