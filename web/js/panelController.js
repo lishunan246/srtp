@@ -4,11 +4,14 @@
     */
 var app=angular.module('App',['ui.bootstrap']);
 angular.module('App').controller('panelController',function($scope,$uibModal){
-    $scope.open=function(){
+    $scope.open=function(type){
         var modalInstance=$uibModal.open({
             animation:true,
-            templateUrl:'uploadModal.html',
-            controller:'ModalInstanceCtrl'
+            templateUrl:(type=='bylw')?'bylwuploadModal.html': 'uploadModal.html',
+            controller:'ModalInstanceCtrl',
+            resolve:{
+
+            }
         })
     };
 });
@@ -20,6 +23,7 @@ angular.module('App').controller('ModalInstanceCtrl',['$scope','fileUpload',func
         console.dir(file);
 
         fileUpload.uploadFileToUrl(file, uploadUrl);
+        $uibModalInstance.dismiss('cancel');
     };
 }]);
 
@@ -50,10 +54,14 @@ app.service('fileUpload', ['$http', function ($http) {
                 }
             })
             .success(function (data) {
-                alert(data);
+                console.log(data);
+                if(data.status)
+                {
+                    alert('上传成功');
+                }
             })
             .error(function (data) {
-                alert(data);
+                console.log(data);
             });
     }
 }]);
