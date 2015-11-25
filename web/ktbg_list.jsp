@@ -317,7 +317,7 @@
         var url;
         var postfix = "_ktbg";
         if (type1 == "ds") {
-            url = "ktbgdaoshiquery.do";
+            url = "ktbgzhidaoquery.do";
 
         }
         else {
