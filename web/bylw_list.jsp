@@ -32,7 +32,7 @@
         </div>
         <div class="modal-body">
 
-            <form style="position: relative;top:-30px;" method="post" action="bylwdownload.do">
+            <form style="position: relative;top:-20px;" method="post" action="bylwdownload.do">
                 <input  class="hidden" type="text" name="saccount" ng-model="id"/><br/>
                 <button class="btn btn-default" type="submit" value="下载开题报告">下载文件</button>
             </form>
@@ -64,7 +64,7 @@
 
         </div>
         <div class="modal-body">
-            <form style="position: relative;top:-30px;" method="post" action="bylwdownload.do">
+            <form style="position: relative;top:-20px;" method="post" action="bylwdownload.do">
                 <input  class="hidden" type="text" name="saccount" ng-model="id"/><br/>
                 <button class="btn btn-default" type="submit" value="下载开题报告">下载文件</button>
             </form>
@@ -102,7 +102,7 @@
                 <tr ng-repeat="x in z" ng-click="openZhidao(x.sid)">
                     <td>{{x.sid}}</td>
                     <td>{{x.sname}}</td>
-                    <td>{{x.supervisorpass?"是":"否"}}</td>
+                    <td>{{x.supervisorpass=="1"?"是":"否"}}</td>
                     <td>指导</td>
                 </tr>
             </table>
@@ -117,7 +117,7 @@
                 <tr ng-repeat="x in m" ng-click="openMangdao(x.sid)">
                     <td>{{x.sid}}</td>
                     <td>{{x.sname}}</td>
-                    <td>{{x.anonymouspass?"是":"否"}}</td>
+                    <td>{{x.anonymouspass=="1"?"是":"否"}}</td>
                     <td>盲审</td>
                 </tr>
             </table>
