@@ -31,6 +31,12 @@
             <h3 class="modal-title">评估毕业论文</h3>
         </div>
         <div class="modal-body">
+
+            <form style="position: relative;top:-30px;" method="post" action="bylwdownload.do">
+                <input  class="hidden" type="text" name="saccount" ng-model="id"/><br/>
+                <button class="btn btn-default" type="submit" value="下载开题报告">下载文件</button>
+            </form>
+
             <form>
                 <div class="form-group">
                     <label for="grade">分数</label>
@@ -55,8 +61,13 @@
     <script type="text/ng-template" id="BYLWmangdao.html">
         <div class="modal-header">
             <h3 class="modal-title">评估毕业论文(盲审)</h3>
+
         </div>
         <div class="modal-body">
+            <form style="position: relative;top:-30px;" method="post" action="bylwdownload.do">
+                <input  class="hidden" type="text" name="saccount" ng-model="id"/><br/>
+                <button class="btn btn-default" type="submit" value="下载开题报告">下载文件</button>
+            </form>
             <form>
                 <div class="form-group">
                     <label for="grade">分数</label>
@@ -74,6 +85,7 @@
             </form>
         </div>
         <div class="modal-footer">
+
             <button class="btn btn-primary" type="button" ng-click="okBYLWmangdao()">提交</button>
             <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
         </div>
