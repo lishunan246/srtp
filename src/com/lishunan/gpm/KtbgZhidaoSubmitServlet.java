@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -42,7 +41,7 @@ public class KtbgZhidaoSubmitServlet extends HttpServlet {
             conn = DB.getConn();
             String sql = "update ktbg set supervisorpass = ?, supervisorcomment = ?, ds_grade = ? where saccount = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString (1, "on".equals(pass) ? "1":"0");
+            pstmt.setString (1, "true".equals(pass) ? "1":"0");
             pstmt.setString (2, comment);
             pstmt.setString (3, ds_grade);
             pstmt.setString (4, saccount);

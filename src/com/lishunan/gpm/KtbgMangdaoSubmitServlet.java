@@ -7,14 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.xml.bind.SchemaOutputResolver;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2015/3/13.
@@ -43,7 +40,7 @@ public class KtbgMangdaoSubmitServlet extends HttpServlet{
             conn = DB.getConn();
             String sql = "update ktbg set anonymouspass = ?, anonymouscomment = ?, md_grade = ? where saccount = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString (1, "on".equals(pass) ? "1":"0");
+            pstmt.setString (1, "true".equals(pass) ? "1":"0");
             pstmt.setString (2, comment);
             pstmt.setString (3, md_grade);
             pstmt.setString (4, saccount);

@@ -52,25 +52,35 @@ angular.module('App').controller('BYLWzhidaoCtrl',function($scope, $uibModalInst
     $scope.id=parseInt(id);
 
     $scope.getZhidao=function(){
-        $http.post('/bylwzhidaoquery.do',{'saccount':$scope.id}).success(function(msg){
+        $http({
+            method: 'POST',
+            url: '/bylwzhidaoquery.do',
+            data: $.param({'saccount':$scope.id}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(msg){
             console.log(msg);
             if(!msg.status){
                 alert(msg.message);
             }
             else {
-                $scope.grade=msg.ds_grade;
-                $scope.pass=msg.supervisorpass;
+                $scope.grade=parseInt(msg.ds_grade);
+                $scope.pass=(msg.supervisorpass == "1");
                 $scope.comment=msg.supervisorcomment;
             }
         })
     };
 
     $scope.okBYLWzhidao = function () {
-        $http.post('/bylwzhidaosubmit.do',{
-            saccount:$scope.id,
-            comment:$scope.comment,
-            pass:$scope.pass,
-            grade:$scope.grade
+        $http({
+            method: 'POST',
+            url: '/bylwzhidaosubmit.do',
+            data: $.param({
+                saccount:$scope.id,
+                comment:$scope.comment,
+                pass:$scope.pass,
+                grade:parseInt( $scope.grade)
+            }),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(msg){
             if(!msg.status){
                 alert(msg.message);
@@ -93,25 +103,35 @@ angular.module('App').controller('BYLWmangdaoCtrl',function($scope, $uibModalIns
     $scope.id=parseInt(id);
 
     $scope.getMangdao=function(){
-        $http.post('/bylwmangdaoquery.do',{'saccount':$scope.id}).success(function(msg){
+        $http({
+            method: 'POST',
+            url: '/bylwmangdaoquery.do',
+            data: $.param({'saccount':$scope.id}),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(msg){
             console.log(msg);
             if(!msg.status){
                 alert(msg.message);
             }
             else {
-                $scope.grade=msg.mdgrade;
-                $scope.pass=msg.anonymouspass;
+                $scope.grade= parseInt(msg.mdgrade);
+                $scope.pass=(msg.anonymouspass=="1");
                 $scope.comment=msg.anonymouscomment;
             }
         })
     };
 
     $scope.okBYLWmangdao = function () {
-        $http.post('/bylwmangdaosubmit.do',{
-            saccount:$scope.id,
-            comment:$scope.comment,
-            pass:$scope.pass,
-            grade:$scope.grade
+        $http({
+            method: 'POST',
+            url: '/bylwmangdaosubmit.do',
+            data: $.param({
+                saccount:$scope.id,
+                comment:$scope.comment,
+                pass:$scope.pass,
+                grade:$scope.grade
+            }),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         }).success(function(msg){
             if(!msg.status){
                 alert(msg.message);

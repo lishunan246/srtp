@@ -42,15 +42,15 @@ public class BylwMangdaoQueryServlet extends HttpServlet {
             pstmt.setString(1, saccount);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()){
-                builder.add ("status", "true")
+                builder.add("status", "true")
                         .add("intro", rs.getString(2) == null ? "" : rs.getString(2))
                         .add("uploaded", rs.getString(3) == null ? "" : rs.getString(3))
-                        .add("supervisorpass", rs.getString(4) == null ? "" : rs.getString(4))
-                        .add("supervisorcomment", rs.getString(5) == null ? "" : rs.getString(5))
-                        .add("ds_grade", rs.getString(6) == null ? "" : rs.getString(6))
-                        .add("anonymouspass", rs.getString(7) == null ? "" : rs.getString(7))
-                        .add("anonymouscomment", rs.getString(8) == null ? "" : rs.getString(8))
-                        .add("mdgrade", rs.getString(9) == null ? "" : rs.getString(9));
+                        .add("supervisorpass", rs.getString(5) == null ? "" : rs.getString(5))
+                        .add("supervisorcomment", rs.getString(6) == null ? "" : rs.getString(6))
+                        .add("ds_grade", rs.getString(7) == null ? "" : rs.getString(7))
+                        .add("anonymouspass", rs.getString(8) == null ? "" : rs.getString(8))
+                        .add("anonymouscomment", rs.getString(9) == null ? "" : rs.getString(9))
+                        .add("mdgrade", rs.getString(10) == null ? "" : rs.getString(10));
             }else{
                 builder.add("status",true)
                         .add("intro", "")

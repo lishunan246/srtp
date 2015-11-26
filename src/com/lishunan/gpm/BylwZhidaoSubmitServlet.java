@@ -41,7 +41,7 @@ public class BylwZhidaoSubmitServlet extends HttpServlet {
             conn = DB.getConn();
             String sql = "update bylw set supervisorpass = ?, supervisorcomment = ?, ds_grade = ? where saccount = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString (1, "on".equals(pass) ? "1":"0");
+            pstmt.setString (1, "true".equals(pass) ? "1":"0");
             pstmt.setString (2, comment);
             pstmt.setString (3, ds_grade);
             pstmt.setString (4, saccount);
