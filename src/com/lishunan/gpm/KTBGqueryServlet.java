@@ -12,7 +12,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2015/3/9.
@@ -53,12 +52,12 @@ public class KTBGqueryServlet extends HttpServlet {
                         .add("name_cn", rs.getString(3) == null ? "" : rs.getString(3))
                         .add("type", rs.getString(4) == null ? "" : rs.getString(4))
                         .add("description", rs.getString(5)  == null ? "" : rs.getString(5))
-                        .add("ds_pass", rs.getString(6) == null ? "" : rs.getString(6))
-                        .add("ds_comment", rs.getString(7) == null ? "" : rs.getString(7))
-                        .add("ds_grade", rs.getString(8) == null ? "" : rs.getString(8))
-                        .add("md_pass", rs.getString(9) == null ? "" : rs.getString(9))
-                        .add("md_comment", rs.getString(10) == null ? "" : rs.getString(10))
-                        .add("md_grade", rs.getString(11) == null ? "" : rs.getString(11));
+                        .add("ds_pass", rs.getString(7) == null ? "" : rs.getString(7))
+                        .add("ds_comment", rs.getString(8) == null ? "" : rs.getString(8))
+                        .add("ds_grade", rs.getString(9) == null ? "" : rs.getString(9))
+                        .add("md_pass", rs.getString(10) == null ? "" : rs.getString(10))
+                        .add("md_comment", rs.getString(11) == null ? "" : rs.getString(11))
+                        .add("md_grade", rs.getString(12) == null ? "" : rs.getString(12));
             }else{
                 builder.add("status",true)
                         .add("name_en", "")

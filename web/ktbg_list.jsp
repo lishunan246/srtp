@@ -1,392 +1,305 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Li Shunan
-  Date: 2015/3/9
-  Time: 15:31
+  User: Shunan
+  Date: 2015/11/27
+  Time: 12:49
   To change this template use File | Settings | File Templates.
-  施朝浩于2015.3.11完成
 --%>
 <%@include file="header.jsp" %>
 <%@include file="navbar.jsp" %>
 <%@ page contentType="text/html; charset=utf-8" %>
 <!-- Begin page content -->
 
-<div class="modal fade" id="modal_ktbg">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-                <dl>
-                    <dt>英文名</dt>
-                    <dd id="name_en_ktbg"></dd>
+<script>
+    /**
+     * Created by Shunan on 2015/11/25.
+     */
+    angular.module('App')
+            .controller('ktbgListController', function($scope,$http,$uibModal) {
+                $scope.m=[];
+                $scope.z=[];
 
-                    <dt>中文名</dt>
-                    <dd id="name_cn_ktbg"></dd>
-                    <dt>类型</dt>
-                    <dd id="type_ktbg"></dd>
-                    <dt>描述</dt>
-                    <dd id="description_ktbg"></dd>
-                </dl>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
+                $scope.getdaoshi=function(){
+                    $http.post("/ktbgzhidaolist.do").success(function(msg){
+                        $scope.z= msg.count>0?msg.student:[];
+                        console.log($scope.z);
+                    });
+                };
 
+                $scope.getmangdao=function(){
+                    $http.post("/ktbgmangdaolist.do").success(function(msg){
+                        $scope.m= msg.count>0?msg.student:[];
+                        console.log($scope.m);
+                    });
 
-                    <div class="form-group">
-                        <label>通过</label>
+                };
 
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="pass_ktbg" value="0" checked>
-                                不通过
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="pass_ktbg" value="1">
-                                通过
-                            </label>
-                        </div>
-                    </div>
+                $scope.getdaoshi();
+                $scope.getmangdao();
 
-                    <div class="form-group">
-                        <label for="grade_ktbg">评分</label>
-                        <input class="form-control" id="grade_ktbg" type="number" placeholder="">
-                    </div>
+                $scope.openZhidao=function(id){
+                    var modal=$uibModal.open({
+                        templateUrl:'KTBGzhidao.html',
+                        controller:'KTBGzhidaoCtrl',
+                        resolve:{
+                            id:function(){
+                                return id;
+                            }
+                        }
+                    });
+                };
+                $scope.openMangdao=function(id){
+                    var modal=$uibModal.open({
+                        templateUrl:'KTBGmangdao.html',
+                        controller:'KTBGmangdaoCtrl',
+                        resolve:{
+                            id:function(){
+                                return id;
+                            }
+                        }
+                    });
+                };
+            });
 
-                    <div class="form-group">
-                        <label for="comment_ktbg">评语</label>
-                        <textarea id="comment_ktbg" class="form-control" rows="5"></textarea>
-                    </div>
-                    <!-- /input-group -->
+    angular.module('App').controller('KTBGzhidaoCtrl',function($scope, $uibModalInstance,id,$http){
+        $scope.id=parseInt(id);
 
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="button_ktbg" data-dismiss="modal">保存</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-<!-- Begin page content -->
+        $scope.getZhidao=function(){
+            $http({
+                method: 'POST',
+                url: '/ktbgzhidaoquery.do',
+                data: $.param({'saccount':$scope.id}),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function(msg){
+                console.log(msg);
+                if(!msg.status){
+                    alert(msg.message);
+                }
+                else {
+                    $scope.grade=parseInt(msg.ds_grade);
+                    $scope.pass=(msg.ds_pass == "1");
+                    $scope.comment=msg.ds_comment;
+                    $scope.chineseName=msg.name_cn;
+                    $scope.englishName=msg.name_en;
+                    $scope.description=msg.description;
+                    $scope.type=(msg.type=='lw')?"毕业论文":"毕业设计";
+                }
+            })
+        };
+
+        $scope.okKTBGzhidao = function () {
+            $http({
+                method: 'POST',
+                url: '/ktbgzhidaosubmit.do',
+                data: $.param({
+                    saccount:$scope.id,
+                    comment:$scope.comment,
+                    pass:$scope.pass,
+                    grade:parseInt( $scope.grade)
+                }),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function(msg){
+                if(!msg.status){
+                    alert(msg.message);
+                }
+                else {
+                    alert('修改成功');
+                }
+                $scope.getZhidao();
+            });
+        };
+
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
+
+        $scope.getZhidao();
+    });
+
+    angular.module('App').controller('KTBGmangdaoCtrl',function($scope, $uibModalInstance,id,$http){
+        $scope.id=parseInt(id);
+
+        $scope.getMangdao=function(){
+            $http({
+                method: 'POST',
+                url: '/ktbgmangdaoquery.do',
+                data: $.param({'saccount':$scope.id}),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function(msg){
+                console.log(msg);
+                if(!msg.status){
+                    alert(msg.message);
+                }
+                else {
+                    $scope.grade= parseInt(msg.md_grade);
+                    $scope.pass=(msg.md_pass=="1");
+                    $scope.comment=msg.md_comment;
+                    $scope.chineseName=msg.name_cn;
+                    $scope.englishName=msg.name_en;
+                    $scope.description=msg.description;
+                    $scope.type=(msg.type=='lw')?"毕业论文":"毕业设计";
+                }
+            })
+        };
+
+        $scope.okKTBGmangdao = function () {
+            $http({
+                method: 'POST',
+                url: '/ktbgmangdaosubmit.do',
+                data: $.param({
+                    saccount:$scope.id,
+                    comment:$scope.comment,
+                    pass:$scope.pass,
+                    grade:$scope.grade
+                }),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function(msg){
+                if(!msg.status){
+                    alert(msg.message);
+                }
+                else {
+                    alert('修改成功');
+                }
+                $scope.getMangdao();
+            });
+        };
+
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
+
+        $scope.getMangdao();
+    });
+</script>
+
 
 <div class="row">
     <div class="col-md-3 col-md-offset-1">
         <%@include file="teacher_panels.jsp" %>
     </div>
-    <div class="col-md-7">
-        <div class="container" id="right-part">
-            <div class="tabbable" id="tabs-874202">
-                <ul class="nav nav-tabs nav-justified">
-                    <li class="active">
-                        <a href="#panel-877184" data-toggle="tab">您指导的学生 <span id="ds_count"
-                                                                               class="badge">...</span></a>
-                    </li>
-                    <li>
-                        <a href="#panel-832086" data-toggle="tab">您盲审的学生 <span id="md_count"
-                                                                               class="badge">...</span></a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="panel-877184">
-                        <table id="ds_table" class="table">
-                            <tr>
-                                <td>学号</td>
-                                <td>姓名</td>
-                                <td>毕业论文/设计</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="tab-pane" id="panel-832086">
-                        <table id="md_table" class="table">
-                            <tr>
-                                <td>学号</td>
-                                <td>姓名</td>
-                                <td>毕业论文/设计</td>
-                                <td>盲审通过</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+    <script type="text/ng-template" id="KTBGzhidao.html">
+        <div class="modal-header">
+            <h3 class="modal-title">评估开题报告</h3>
+        </div>
+        <div class="modal-body">
+            <div>
+                <dl>
+                    <dt>英文名</dt>
+                    <dd >{{englishName}}</dd>
+
+                    <dt>中文名</dt>
+                    <dd >{{chineseName}}</dd>
+                    <dt>类型</dt>
+                    <dd >{{type}}</dd>
+                    <dt>描述</dt>
+                    <dd>{{description}}</dd>
+                </dl>
             </div>
+            <form style="position: relative;top:-20px;" method="post" action="ktbgdownload.do">
+                <input  class="hidden" type="text" name="saccount" ng-model="id"/><br/>
+                <button class="btn btn-default" type="submit" value="下载开题报告">下载文件</button>
+            </form>
+
+            <form>
+                <div class="form-group">
+                    <label for="grade">分数</label>
+                    <input type="number"  ng-model="grade">
+                </div>
+                <div class="form-group">
+                    <label for="comment">评论</label>
+                    <input type="text"  ng-model="comment">
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="pass"> 予以通过
+                    </label>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="okKTBGzhidao()">提交</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="KTBGmangdao.html">
+        <div class="modal-header">
+            <h3 class="modal-title">评估毕业论文(盲审)</h3>
+
+        </div>
+        <div class="modal-body">
+            <div>
+                <dl>
+                    <dt>英文名</dt>
+                    <dd id="name_en_ktbg">{{englishName}}</dd>
+
+                    <dt>中文名</dt>
+                    <dd id="name_cn_ktbg">{{chineseName}}</dd>
+                    <dt>类型</dt>
+                    <dd id="type_ktbg">{{type}}</dd>
+                    <dt>描述</dt>
+                    <dd id="description_ktbg">{{description}}</dd>
+                </dl>
+            </div>
+            <form style="position: relative;top:-20px;" method="post" action="ktbgdownload.do">
+                <input  class="hidden" type="text" name="saccount" ng-model="id"/><br/>
+                <button class="btn btn-default" type="submit" value="下载开题报告">下载文件</button>
+            </form>
+            <form>
+                <div class="form-group">
+                    <label for="grade">分数</label>
+                    <input type="number" id="grade" ng-model="grade">
+                </div>
+                <div class="form-group">
+                    <label for="comment">评论</label>
+                    <input type="text" id="comment" ng-model="comment">
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="pass"> 予以通过
+                    </label>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+
+            <button class="btn btn-primary" type="button" ng-click="okKTBGmangdao()">提交</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
+        </div>
+    </script>
+    <div ng-controller="ktbgListController" class="col-md-7">
+        <div class="container" id="right-part">
+            <table class="table table-hover table-bordered">
+                <tr class="info">
+                    <td>学号</td>
+                    <td>姓名</td>
+                    <td>是否通过</td>
+                    <td>类型</td>
+                </tr>
+                <tr ng-repeat="x in z" ng-click="openZhidao(x.sid)">
+                    <td>{{x.sid}}</td>
+                    <td>{{x.sname}}</td>
+                    <td>{{x.supervisorpass=="1"?"是":"否"}}</td>
+                    <td>指导</td>
+                </tr>
+            </table>
+
+            <table class="table table-hover table-bordered">
+                <tr class="info">
+                    <td>学号</td>
+                    <td>姓名</td>
+                    <td>是否通过</td>
+                    <td>类型</td>
+                </tr>
+                <tr ng-repeat="x in m" ng-click="openMangdao(x.sid)">
+                    <td>{{x.sid}}</td>
+                    <td>{{x.sname}}</td>
+                    <td>{{x.anonymouspass=="1"?"是":"否"}}</td>
+                    <td>盲审</td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
 
-<script>
-
-    function get_ktbg() {
-        $(".result").remove();
-        $.ajax({
-            type: "GET",
-            url: "ktbgmangdaolist.do",
-            timeout: 500,
-            statusCode: {
-                500: function () {
-                    alert(" 500 data still loading");
-                    console.log('500 ');
-                }
-            },
-            error: function (request, status, err) {
-                if (status == "timeout") {
-                    showError("服务器无响应");
-                }
-                else {
-                    alert(request + status + err);
-                }
-            }
-        }).done(function (msg) {
-            console.log(msg);
-            var obj = JSON.parse(msg);
-            if (!obj.status) {
-                alert(obj.message);
-            }
-            else {
-                $("#md_count").text(obj.count);
-                if (obj.count) {
-
-                    for (var i = 0; i < obj.count; i++) {
-                        var temp;
-                        if (obj.student[i].md_pass) {
-                            temp = "已通过";
-                        }
-                        else {
-                            temp = "未通过";
-                        }
-                        $("#md_table").append(
-                                '<tr class="result" onclick="ktbg_query(' + "'" + "md" + "'" + ',' + obj.student[i].sid + ')"><td>' + obj.student[i].sid + '</td> <td>' + obj.student[i].sname + '</td> <td>' + obj.student[i].name_cn + '</td><td>' + temp + '</td></tr>'
-                        );
-
-
-                    }
-                }
-            }
-        });
-
-        $.ajax({
-            type: "GET",
-            url: "ktbgzhidaolist.do",
-            timeout: 500,
-            statusCode: {
-                500: function () {
-                    alert(" 500 data still loading");
-                    console.log('500 ');
-                }
-            },
-            error: function (request, status, err) {
-                if (status == "timeout") {
-                    showError("服务器无响应");
-                }
-                else {
-                    alert(request + status + err);
-                }
-            }
-        }).done(function (msg) {
-            console.log(msg);
-            var obj = JSON.parse(msg);
-            if (!obj.status) {
-                alert(obj.message);
-            }
-            else {
-                $("#ds_count").text(obj.count);
-                if (obj.count) {
-
-                    for (var i = 0; i < obj.count; i++) {
-                        var temp;
-                        if (obj.student[i].md_pass) {
-                            temp = "已通过";
-                        }
-                        else {
-                            temp = "未通过";
-                        }
-                        $("#ds_table").append(
-                                '<tr class="result" onclick="ktbg_query(' + "'" + "ds" + "'" + ',' + obj.student[i].sid + ')"><td>' + obj.student[i].sid + '</td> <td>' + obj.student[i].sname + '</td> <td>' + obj.student[i].name_cn + '</td><td>' + temp + '</td></tr>'
-                        );
-
-
-                    }
-                }
-            }
-        })
-    }
-
-    function get_bylw() {
-        $(".result").remove();
-        $.ajax({
-            type: "GET",
-            url: "bylwmangdaolist.do",
-            timeout: 500,
-            statusCode: {
-                500: function () {
-                    alert(" 500 data still loading");
-                    console.log('500 ');
-                }
-            },
-            error: function (request, status, err) {
-                if (status == "timeout") {
-                    showError("服务器无响应");
-                }
-                else {
-                    alert(request + status + err);
-                }
-            }
-        }).done(function (msg) {
-            console.log(msg);
-            var obj = JSON.parse(msg);
-            if (!obj.status) {
-                alert(obj.message);
-            }
-            else {
-                $("#md_count").text(obj.count);
-                if (obj.count) {
-
-                    for (var i = 0; i < obj.count; i++) {
-                        var temp;
-                        if (obj.student[i].md_pass) {
-                            temp = "已通过";
-                        }
-                        else {
-                            temp = "未通过";
-                        }
-                        $("#md_table").append(
-                                '<tr class="result" onclick="bylw_query(' + "'" + "md" + "'" + ',' + obj.student[i].sid + ')"><td>' + obj.student[i].sid + '</td> <td>' + obj.student[i].sname + '</td> <td>' + obj.student[i].name_cn + '</td><td>' + temp + '</td></tr>'
-                        );
-
-
-                    }
-                }
-            }
-        });
-
-        $.ajax({
-            type: "GET",
-            url: "bylwzhidaolist.do",
-            timeout: 500,
-            statusCode: {
-                500: function () {
-                    alert(" 500 data still loading");
-                    console.log('500 ');
-                }
-            },
-            error: function (request, status, err) {
-                if (status == "timeout") {
-                    showError("服务器无响应");
-                }
-                else {
-                    alert(request + status + err);
-                }
-            }
-        }).done(function (msg) {
-            console.log(msg);
-            var obj = JSON.parse(msg);
-            if (!obj.status) {
-                alert(obj.message);
-            }
-            else {
-                $("#ds_count").text(obj.count);
-                if (obj.count) {
-
-                    for (var i = 0; i < obj.count; i++) {
-                        var temp;
-                        if (obj.student[i].md_pass) {
-                            temp = "已通过";
-                        }
-                        else {
-                            temp = "未通过";
-                        }
-                        $("#ds_table").append(
-                                '<tr class="result" onclick="bylw_query(' + "'" + "ds" + "'" + ',' + obj.student[i].sid + ')"><td>' + obj.student[i].sid + '</td> <td>' + obj.student[i].sname + '</td> <td>' + obj.student[i].name_cn + '</td><td>' + temp + '</td></tr>'
-                        );
-
-
-                    }
-                }
-            }
-        })
-    }
-
-    $(document).ready(function () {
-        get_ktbg();
-    });
-
-    function ktbg_query(type1, saccount) {
-        var url;
-        var postfix = "_ktbg";
-        if (type1 == "ds") {
-            url = "ktbgzhidaoquery.do";
-
-        }
-        else {
-            url = "ktbgmangdaoquery.do";
-        }
-
-        $.ajax({
-            type: "GET",
-            url: url,
-            data: {
-                "saccount": saccount
-            },
-            timeout: 500,
-            statusCode: {
-                500: function () {
-                    alert(" 500 data still loading");
-                    console.log('500 ');
-                }
-            },
-            error: function (request, status, err) {
-                if (status == "timeout") {
-                    showError("服务器无响应");
-                }
-                else {
-                    alert(request + status + err);
-                }
-            }
-        }).done(function (msg) {
-            console.log(msg);
-            var obj = JSON.parse(msg);
-            if (!obj.status) {
-                alert(obj.message);
-            }
-            else {
-                $("#name_en" + postfix).text(obj.name_en);
-                $("#name_cn" + postfix).text(obj.name_cn);
-                var type;
-                if (obj.type == "lw")
-                    type = "毕业论文";
-                else if ("sj" == obj.type)
-                    type = "毕业设计";
-                else
-                    type = "?";
-
-                var comment;
-                var pass;
-
-                if (type1 == "ds") {
-                    pass = obj.ds_pass;
-                    comment = obj.ds_pass;
-                }
-                else {
-                    pass = obj.md_pass;
-                    comment = obj.md_pass;
-                }
-
-                $("#type" + postfix).text(type);
-                $("#description" + postfix).text(obj.description);
-                $("#comment" + postfix).val(comment);
-                if (pass == "")
-                    pass = "0";
-                $('input[name="pass' + postfix + '"][value="' + pass + '"]').prop('checked', true);
-                $("#modal" + postfix).modal("toggle");
-
-            }
-        })
-    }
-
-
-</script>
-
 <%@include file="footer.jsp" %>
+
