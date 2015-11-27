@@ -278,7 +278,7 @@
                 <tr ng-repeat="x in z" ng-click="openZhidao(x.sid)">
                     <td>{{x.sid}}</td>
                     <td>{{x.sname}}</td>
-                    <td>{{x.supervisorpass=="1"?"是":"否"}}</td>
+                    <td>{{x.ds_pass=="1"?"是":"否"}}</td>
                     <td>指导</td>
                 </tr>
             </table>
@@ -293,7 +293,7 @@
                 <tr ng-repeat="x in m" ng-click="openMangdao(x.sid)">
                     <td>{{x.sid}}</td>
                     <td>{{x.sname}}</td>
-                    <td>{{x.anonymouspass=="1"?"是":"否"}}</td>
+                    <td>{{x.md_pass=="1"?"是":"否"}}</td>
                     <td>盲审</td>
                 </tr>
             </table>
